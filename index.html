@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital SAT Math 2026 Master Study Workspace</title>
+  
+  <!-- KaTeX CSS & JS for crystal clear math formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="app-container">
+  <!-- SIDEBAR DASHBOARD -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">∑</div>
+      <div class="brand-info">
+        <h1>SAT Math 2026</h1>
+        <span>Master Workspace</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <!-- Dashboard Overview -->
+      <div class="nav-section">
+        <a class="nav-link active" data-view="dashboard" id="nav-dashboard">
+          <span class="nav-icon">📊</span>
+          <span>Dashboard Overview</span>
+        </a>
+      </div>
+
+      <!-- Module 1 -->
+      <div class="nav-section">
+        <div class="nav-section-title">Module 1</div>
+        <a class="nav-link" data-view="module-1" id="nav-module-1">
+          <span class="nav-icon">📐</span>
+          <span>Formula & Cheat Sheet</span>
+          <span class="nav-badge green">21</span>
+        </a>
+        <div class="nav-sublinks">
+          <a class="nav-sublink" data-view="module-1" data-filter="all">All Formulas</a>
+          <a class="nav-sublink" data-view="module-1" data-filter="reference">Official Reference</a>
+          <a class="nav-sublink" data-view="module-1" data-filter="algebra">Algebra Essentials</a>
+          <a class="nav-sublink" data-view="module-1" data-filter="advanced">Advanced Math</a>
+          <a class="nav-sublink" data-view="module-1" data-filter="data">Data & Statistics</a>
+          <a class="nav-sublink" data-view="module-1" data-filter="trigonometry">Trigonometry</a>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="nav-section">
+        <div class="nav-section-title">Module 2</div>
+        <a class="nav-link" data-view="module-2" id="nav-module-2">
+          <span class="nav-icon">🗺️</span>
+          <span>Topic Map & Weights</span>
+          <span class="nav-badge teal">2026</span>
+        </a>
+        <div class="nav-sublinks">
+          <a class="nav-sublink" data-view="module-2" data-sub="weighting">Weighting Breakdown</a>
+          <a class="nav-sublink" data-view="module-2" data-sub="algebra"><span class="tier-indicator tier-a"></span>Algebra (35%)</a>
+          <a class="nav-sublink" data-view="module-2" data-sub="advanced-math"><span class="tier-indicator tier-a"></span>Adv. Math (35%)</a>
+          <a class="nav-sublink" data-view="module-2" data-sub="problem-solving"><span class="tier-indicator tier-b"></span>Data & Stats (15%)</a>
+          <a class="nav-sublink" data-view="module-2" data-sub="geometry-trig"><span class="tier-indicator tier-b"></span>Geom & Trig (15%)</a>
+          <a class="nav-sublink" data-view="module-2" data-sub="roadmaps">Score Roadmaps</a>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="nav-section">
+        <div class="nav-section-title">Module 3</div>
+        <a class="nav-link" data-view="module-3" id="nav-module-3">
+          <span class="nav-icon">📝</span>
+          <span>100-Question Bank</span>
+          <span class="nav-badge orange">100 Qs</span>
+        </a>
+        <div class="nav-sublinks">
+          <a class="nav-sublink" data-view="module-3" data-tier="all">All 100 Questions</a>
+          <a class="nav-sublink" data-view="module-3" data-tier="A"><span class="tier-indicator tier-a"></span>Part A: Foundational (1-50)</a>
+          <a class="nav-sublink" data-view="module-3" data-tier="B"><span class="tier-indicator tier-b"></span>Part B: Hard Tier (51-100)</a>
+          <a class="nav-sublink" data-view="simulator"><span class="tier-indicator tier-a"></span>⚡ Bluebook Simulator</a>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="nav-section">
+        <div class="nav-section-title">Module 4</div>
+        <a class="nav-link" data-view="module-4" id="nav-module-4">
+          <span class="nav-icon">💡</span>
+          <span>Solutions & Desmos</span>
+          <span class="nav-badge green">10-15s</span>
+        </a>
+        <div class="nav-sublinks">
+          <a class="nav-sublink" data-view="module-4" data-tab="keys">Master Answer Key (1-100)</a>
+          <a class="nav-sublink" data-view="module-4" data-tab="desmos">Desmos 8 Superpowers</a>
+        </div>
+      </div>
+
+      <!-- Study Tools -->
+      <div class="nav-section">
+        <div class="nav-section-title">Study Tools</div>
+        <a class="nav-link" onclick="app.toggleNotesWindow()" style="cursor: pointer;" title="Toggle Floating Study Notes Window">
+          <span class="nav-icon">📝</span>
+          <span>Study Notes</span>
+          <span class="nav-badge green" id="sidebar-notes-badge">Notes</span>
+        </a>
+        <a class="nav-link" onclick="app.openTrGlossary()" style="cursor: pointer;" title="SAT Matematik Türkçe Terimler Sözlüğü">
+          <span class="nav-icon">🇹🇷</span>
+          <span>Matematik Sözlüğü</span>
+          <span class="nav-badge teal">120+ Terim</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-progress-card">
+        <div class="progress-header">
+          <span>Question Mastery</span>
+          <span id="sidebar-progress-text">0 / 100</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="sidebar-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <div class="main-wrapper">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" title="Toggle Menu">☰</button>
+        <div class="header-title-wrap">
+          <h2 id="top-header-title">Dashboard Overview</h2>
+          <p id="top-header-subtitle">Digital SAT Math 2026 Master Study Workspace</p>
+        </div>
+
+        <!-- Floating Study Notes on Left Side Under Button -->
+        <div class="floating-notes-container" id="floating-notes-container">
+          <button class="floating-notes-btn" id="floating-notes-toggle" onclick="app.toggleNotesWindow()" title="Open floating study notes & scratchpad">
+            <span>📝</span>
+            <span>Study Notes</span>
+            <span class="notes-badge" id="notes-count-badge">0</span>
+          </button>
+
+          <div class="floating-notes-window" id="floating-notes-window">
+            <div class="notes-win-header">
+              <div class="notes-win-title">
+                <span>📝</span>
+                <span>Study Notes & Scratchpad</span>
+              </div>
+              <div class="notes-win-actions">
+                <span class="notes-save-status" id="notes-save-status">✓ Saved</span>
+                <button class="notes-icon-btn" onclick="app.exportNotes()" title="Download notes as text file">📥</button>
+                <button class="notes-icon-btn" onclick="app.clearNotes()" title="Clear notes">🗑️</button>
+                <button class="notes-icon-btn" onclick="app.toggleNotesWindow()" title="Close notes window">✕</button>
+              </div>
+            </div>
+
+            <div class="notes-template-bar">
+              <button class="notes-chip-btn" onclick="app.insertNoteTemplate('formula')">+ Formula Trap</button>
+              <button class="notes-chip-btn" onclick="app.insertNoteTemplate('desmos')">+ Desmos Hack</button>
+              <button class="notes-chip-btn" onclick="app.insertNoteTemplate('question')">+ Review Q#</button>
+              <button class="notes-chip-btn" onclick="app.insertNoteTemplate('checklist')">+ Goal</button>
+            </div>
+
+            <textarea 
+              class="notes-textarea" 
+              id="floating-notes-textarea" 
+              placeholder="Jot down formula edge cases, Desmos regressions to practice, or tricky questions... Auto-saved in real-time."
+              oninput="app.onNotesInput()"
+            ></textarea>
+
+            <div class="notes-win-footer">
+              <span id="notes-word-count">0 words • 0 chars</span>
+              <span>Auto-saved locally</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-outline btn-sm" onclick="app.openTrGlossary()" title="120+ SAT Matematik Terimleri Sözlüğü">
+          <span>🇹🇷</span>
+          <span>Türkçe Sözlük</span>
+        </button>
+        <button class="btn btn-outline btn-sm" id="btn-open-ref-sheet">
+          <span>📜</span>
+          <span>Reference Sheet</span>
+        </button>
+        <button class="btn btn-outline btn-sm" id="btn-open-desmos">
+          <span>📈</span>
+          <span>Desmos Calculator</span>
+        </button>
+        <button class="btn btn-primary btn-sm" id="btn-launch-sim">
+          <span>⚡</span>
+          <span>Start Practice Test</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT AREA -->
+    <main class="content-area">
+
+      <!-- ======================================================== -->
+      <!-- VIEW 0: DASHBOARD OVERVIEW                              -->
+      <!-- ======================================================== -->
+      <section class="view-section active" id="view-dashboard">
+        <div class="hero-banner">
+          <div class="hero-tag">Official 2026 Specifications</div>
+          <h2 class="hero-title">Master the <span class="highlight-green">Digital SAT Math</span> with <span class="highlight-orange">Desmos Speed</span></h2>
+          <p class="hero-desc">
+            A complete, curriculum-aligned study system featuring an exhaustive formula cheat sheet, 2026 domain weighting analysis, 100 authentic tiered questions with step-by-step algebraic proofs, and instant 10–15 second Desmos calculator speed hacks.
+          </p>
+          <div class="hero-stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon green">📐</div>
+              <div>
+                <div class="stat-val">21</div>
+                <div class="stat-lbl">Core Formulas & Traps</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon teal">🎯</div>
+              <div>
+                <div class="stat-val">70%</div>
+                <div class="stat-lbl">Algebra + Adv. Math Weight</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange">📚</div>
+              <div>
+                <div class="stat-val">100</div>
+                <div class="stat-lbl">Tiered Original Questions</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon green">⚡</div>
+              <div>
+                <div class="stat-val">100%</div>
+                <div class="stat-lbl">Desmos Shortcuts Included</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Turkish Toggle -->
+        <div class="section-tr-wrap" id="tr-wrap-dashboard">
+          <button class="btn btn-tr-toggle" onclick="app.toggleSectionTr('dashboard')" id="btn-tr-dashboard">
+            <span>🇹🇷</span>
+            <span>Türkçe Açıklama & Uluslararası Öğrenci Kılavuzu</span>
+            <span class="tr-arrow" id="arrow-tr-dashboard">▼</span>
+          </button>
+          <div class="tr-section-drawer" id="drawer-tr-dashboard"></div>
+        </div>
+
+        <!-- 4 Quick Module Cards -->
+        <div class="quick-cards-grid">
+          <div class="action-card" onclick="app.navigate('module-1')">
+            <div class="action-card-header">
+              <span class="card-badge" style="background:#eef8f0; color:#4da45c;">MODULE 1</span>
+              <span style="font-size: 22px;">📐</span>
+            </div>
+            <h3 class="card-title">Formula & Cheat Sheet</h3>
+            <p class="card-desc">Complete reference formulas with College Board edge cases, traps, and Desmos verification rules.</p>
+            <div class="card-footer">
+              <span>Explore 21 Formulas</span>
+              <span>→</span>
+            </div>
+          </div>
+
+          <div class="action-card" onclick="app.navigate('module-2')">
+            <div class="action-card-header">
+              <span class="card-badge" style="background:#edf8f5; color:#3f9480;">MODULE 2</span>
+              <span style="font-size: 22px;">🗺️</span>
+            </div>
+            <h3 class="card-title">Topic Map & Weights</h3>
+            <p class="card-desc">Exact 2026 domain breakdowns (35% Algebra, 35% Adv Math, 15% PS, 15% Geom) and score roadmaps.</p>
+            <div class="card-footer">
+              <span>View Topic Map</span>
+              <span>→</span>
+            </div>
+          </div>
+
+          <div class="action-card" onclick="app.navigate('module-3')">
+            <div class="action-card-header">
+              <span class="card-badge" style="background:#fff3ec; color:#e6631b;">MODULE 3</span>
+              <span style="font-size: 22px;">📝</span>
+            </div>
+            <h3 class="card-title">100-Question Bank</h3>
+            <p class="card-desc">Part A Foundational (1-50) and Part B Hard Tier (51-100) with 70% MCQ and 30% SPR distribution.</p>
+            <div class="card-footer">
+              <span>Practice Questions</span>
+              <span>→</span>
+            </div>
+          </div>
+
+          <div class="action-card" onclick="app.navigate('module-4')">
+            <div class="action-card-header">
+              <span class="card-badge" style="background:#eef8f0; color:#4da45c;">MODULE 4</span>
+              <span style="font-size: 22px;">💡</span>
+            </div>
+            <h3 class="card-title">Solutions & Desmos Hacks</h3>
+            <p class="card-desc">Step-by-step rigorous algebraic derivations paired with 10-15 second Desmos calculator speed tricks.</p>
+            <div class="card-footer">
+              <span>Learn Desmos Hacks</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2026 Test Structure Summary -->
+        <div class="weighting-overview-card">
+          <div class="module-tagline">Test Structure Blueprint</div>
+          <h3 class="module-title">2026 Digital SAT Math Architecture</h3>
+          <p class="module-desc">The Digital SAT uses a multistage adaptive model. Your performance on Module 1 determines whether you unlock the high-scoring Module 2.</p>
+          
+          <div class="domain-bars-grid">
+            <div class="domain-bar-card algebra">
+              <div class="domain-header">
+                <span class="domain-name">Module 1 (Routing)</span>
+                <span class="domain-pct">22 Qs</span>
+              </div>
+              <div class="domain-questions-count">35 Minutes • Easy, Medium, Hard Mix</div>
+              <p style="font-size: 13px; color: var(--text-muted);">Contains a broad mix of difficulty levels. You must score ~15+ correct to route into the Hard Module 2.</p>
+            </div>
+
+            <div class="domain-bar-card advanced">
+              <div class="domain-header">
+                <span class="domain-name">Module 2 (Hard Tier)</span>
+                <span class="domain-pct">22 Qs</span>
+              </div>
+              <div class="domain-questions-count">35 Minutes • Medium, Hard, Extreme</div>
+              <p style="font-size: 13px; color: var(--text-muted);">Unlocks scores between 600 and 800. Heavy emphasis on multi-step parameters, nonlinear systems, and advanced circles.</p>
+            </div>
+
+            <div class="domain-bar-card problem-solving">
+              <div class="domain-header">
+                <span class="domain-name">Question Formats</span>
+                <span class="domain-pct">75 / 25%</span>
+              </div>
+              <div class="domain-questions-count">Multiple Choice & SPR Grid-In</div>
+              <p style="font-size: 13px; color: var(--text-muted);">Approximately 33 Multiple-Choice questions (4 options) and 11 Student-Produced Responses per test.</p>
+            </div>
+
+            <div class="domain-bar-card geometry-trig">
+              <div class="domain-header">
+                <span class="domain-name">Desmos Policy</span>
+                <span class="domain-pct">100%</span>
+              </div>
+              <div class="domain-questions-count">Allowed on EVERY Question</div>
+              <p style="font-size: 13px; color: var(--text-muted);">No non-calculator section exists on the Digital SAT. Desmos is embedded and active on all 44 test questions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 1: MODULE 1 FORMULA & CHEAT SHEET                  -->
+      <!-- ======================================================== -->
+      <section class="view-section" id="view-module-1">
+        <div class="module-header">
+          <div class="module-tagline">Module 1: Reference Guide</div>
+          <h2 class="module-title">Comprehensive Formula & Cheat Sheet</h2>
+          <p class="module-desc">Exhaustive formula database categorized by domain, complete with variable definitions, College Board traps, and Desmos verification shortcuts.</p>
+        </div>
+
+        <!-- Section Turkish Toggle -->
+        <div class="section-tr-wrap" id="tr-wrap-module-1">
+          <button class="btn btn-tr-toggle" onclick="app.toggleSectionTr('module-1')" id="btn-tr-module-1">
+            <span>🇹🇷</span>
+            <span>Türkçe Formül & Matematik Terimleri Kılavuzu</span>
+            <span class="tr-arrow" id="arrow-tr-module-1">▼</span>
+          </button>
+          <div class="tr-section-drawer" id="drawer-tr-module-1"></div>
+        </div>
+
+        <div class="filter-toolbar">
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="formula-search" placeholder="Search formulas by name, concept, or variable...">
+          </div>
+          <div class="category-pills">
+            <button class="pill-btn active" data-filter="all">All (21)</button>
+            <button class="pill-btn" data-filter="reference">Official Reference (8)</button>
+            <button class="pill-btn" data-filter="algebra">Algebra (5)</button>
+            <button class="pill-btn" data-filter="advanced">Advanced Math (7)</button>
+            <button class="pill-btn" data-filter="data">Data & Stats (5)</button>
+            <button class="pill-btn" data-filter="trigonometry">Trigonometry (5)</button>
+          </div>
+        </div>
+
+        <div class="formulas-grid" id="formulas-container">
+          <!-- Rendered dynamically via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 2: MODULE 2 TOPIC MAP & WEIGHTING                  -->
+      <!-- ======================================================== -->
+      <section class="view-section" id="view-module-2">
+        <div class="module-header">
+          <div class="module-tagline">Module 2: Syllabus Breakdown</div>
+          <h2 class="module-title">2026 Topic Map & Weighting Breakdown</h2>
+          <p class="module-desc">Exact skill distribution, question frequency, priority focus areas, and strategic roadmaps for 600, 700, and 800 score targets.</p>
+        </div>
+
+        <!-- Section Turkish Toggle -->
+        <div class="section-tr-wrap" id="tr-wrap-module-2">
+          <button class="btn btn-tr-toggle" onclick="app.toggleSectionTr('module-2')" id="btn-tr-module-2">
+            <span>🇹🇷</span>
+            <span>Türkçe Konu Haritası & Sınav Ağırlıkları</span>
+            <span class="tr-arrow" id="arrow-tr-module-2">▼</span>
+          </button>
+          <div class="tr-section-drawer" id="drawer-tr-module-2"></div>
+        </div>
+
+        <div class="weighting-overview-card" id="weighting-overview">
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">Domain Score Weighting</h3>
+          <div class="domain-bars-grid" id="domain-overview-cards">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Detailed Domain Accordions -->
+        <h3 style="font-size: 18px; font-weight: 700; margin: 28px 0 16px; color: var(--text-main);">In-Depth Domain Analysis & Sub-Skills</h3>
+        <div class="domain-details-section" id="domain-details-container">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Score Target Roadmaps -->
+        <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px; color: var(--text-main);">Target Score Roadmaps & Readiness Checklist</h3>
+        <div class="roadmap-grid" id="roadmap-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 3: MODULE 3 100-QUESTION BANK                      -->
+      <!-- ======================================================== -->
+      <section class="view-section" id="view-module-3">
+        <div class="module-header">
+          <div class="module-tagline">Module 3: Question Repository</div>
+          <h2 class="module-title">100-Question Bank (With Difficulty Tiering)</h2>
+          <p class="module-desc">Original Digital SAT Math questions balanced across 70% Multiple-Choice (4 options) and 30% Student-Produced Responses (SPR).</p>
+        </div>
+
+        <!-- Section Turkish Toggle -->
+        <div class="section-tr-wrap" id="tr-wrap-module-3">
+          <button class="btn btn-tr-toggle" onclick="app.toggleSectionTr('module-3')" id="btn-tr-module-3">
+            <span>🇹🇷</span>
+            <span>Türkçe Soru Bankası & Terim Analizi Kılavuzu</span>
+            <span class="tr-arrow" id="arrow-tr-module-3">▼</span>
+          </button>
+          <div class="tr-section-drawer" id="drawer-tr-module-3"></div>
+        </div>
+
+        <!-- Tier Switcher Tabs -->
+        <div class="tier-tabs">
+          <button class="tier-tab-btn active" data-tier="all">
+            <span>📋</span>
+            <span>All Questions (100)</span>
+          </button>
+          <button class="tier-tab-btn" data-tier="A">
+            <span class="tier-indicator tier-a"></span>
+            <span>Part A: Foundational & Standard (Q1 - Q50)</span>
+          </button>
+          <button class="tier-tab-btn tier-b-active" data-tier="B">
+            <span class="tier-indicator tier-b"></span>
+            <span>Part B: Adaptive Hard Tier (Q51 - Q100)</span>
+          </button>
+          <button class="btn btn-accent btn-sm" style="margin-left: auto;" onclick="app.launchSimulator('all')">
+            <span>⚡</span>
+            <span>Launch in Test Simulator</span>
+          </button>
+        </div>
+
+        <!-- Filter Toolbar -->
+        <div class="filter-toolbar">
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="q-search" placeholder="Search by question text or topic...">
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <select id="filter-domain" class="pill-btn" style="padding: 7px 12px;">
+              <option value="all">All Domains</option>
+              <option value="algebra">Algebra</option>
+              <option value="advanced-math">Advanced Math</option>
+              <option value="problem-solving">Problem-Solving & Data</option>
+              <option value="geometry-trig">Geometry & Trig</option>
+            </select>
+            <select id="filter-type" class="pill-btn" style="padding: 7px 12px;">
+              <option value="all">All Types (MCQ & SPR)</option>
+              <option value="mcq">Multiple-Choice (MCQ)</option>
+              <option value="spr">Student-Produced (SPR)</option>
+            </select>
+            <select id="filter-difficulty" class="pill-btn" style="padding: 7px 12px;">
+              <option value="all">All Difficulties</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+              <option value="Extreme">Extreme</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Question List Container -->
+        <div class="questions-explorer-grid" id="questions-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 4: MODULE 4 SOLUTIONS & DESMOS TRICKS              -->
+      <!-- ======================================================== -->
+      <section class="view-section" id="view-module-4">
+        <div class="module-header">
+          <div class="module-tagline">Module 4: Solutions & Desmos Masterclass</div>
+          <h2 class="module-title">Step-by-Step Solution Key & Desmos Shortcuts</h2>
+          <p class="module-desc">Rigorous worked mathematical solutions and 10–15 second Desmos speed hacks for every question.</p>
+        </div>
+
+        <!-- Section Turkish Toggle -->
+        <div class="section-tr-wrap" id="tr-wrap-module-4">
+          <button class="btn btn-tr-toggle" onclick="app.toggleSectionTr('module-4')" id="btn-tr-module-4">
+            <span>🇹🇷</span>
+            <span>Türkçe Çözüm Stratejileri & Desmos Taktikleri</span>
+            <span class="tr-arrow" id="arrow-tr-module-4">▼</span>
+          </button>
+          <div class="tr-section-drawer" id="drawer-tr-module-4"></div>
+        </div>
+
+        <div class="tier-tabs">
+          <button class="tier-tab-btn active" id="tab-btn-keys" onclick="app.switchModule4Tab('keys')">
+            <span>🔑</span>
+            <span>100-Question Master Answer Key</span>
+          </button>
+          <button class="tier-tab-btn" id="tab-btn-desmos" onclick="app.switchModule4Tab('desmos')">
+            <span>⚡</span>
+            <span>Desmos 8 Superpowers Masterclass</span>
+          </button>
+        </div>
+
+        <!-- Subtab 1: Solution Key -->
+        <div id="subtab-solutions-key">
+          <div class="filter-toolbar">
+            <div class="search-box">
+              <span>🔍</span>
+              <input type="text" id="solution-search" placeholder="Filter answer key by Question # or keyword...">
+            </div>
+            <div class="category-pills">
+              <button class="pill-btn active" data-sol-tier="all">All (100)</button>
+              <button class="pill-btn" data-sol-tier="A">Part A (1-50)</button>
+              <button class="pill-btn" data-sol-tier="B">Part B (51-100)</button>
+            </div>
+          </div>
+
+          <div class="questions-explorer-grid" id="solutions-container">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Subtab 2: Desmos 8 Superpowers Masterclass -->
+        <div id="subtab-desmos-guide" style="display: none;">
+          <div class="desmos-grid" id="desmos-hacks-container">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 5: DIGITAL SAT BLUEBOOK SIMULATOR                  -->
+      <!-- ======================================================== -->
+      <section class="view-section" id="view-simulator">
+        <div class="sim-container">
+          <!-- Simulator Header -->
+          <div class="sim-header">
+            <div class="sim-title-group">
+              <div class="sim-module-label">
+                <span>⚡</span>
+                <span id="sim-module-name">Digital SAT Math Practice</span>
+              </div>
+              <div class="sim-q-indicator" id="sim-q-counter">Question 1 of 50</div>
+            </div>
+
+            <!-- Timer -->
+            <div class="sim-timer-box" id="sim-timer-display" title="Click to hide/show timer">
+              <span>⏱️</span>
+              <span id="sim-timer-text">35:00</span>
+            </div>
+
+            <!-- Top Tools -->
+            <div class="sim-tools-group">
+              <button class="sim-tool-btn" id="sim-flag-btn" title="Mark for review">
+                <span>🚩</span>
+                <span>Flag for Review</span>
+              </button>
+              <button class="sim-tool-btn" id="sim-ref-btn" title="College Board Reference Sheet">
+                <span>📜</span>
+                <span>Reference</span>
+              </button>
+              <button class="sim-tool-btn" id="sim-tr-btn" onclick="app.toggleSimTrHelp()" title="Türkçe Soru Çevirisi & Terimler">
+                <span>🇹🇷</span>
+                <span>Türkçe Yardım</span>
+              </button>
+              <button class="sim-tool-btn" id="sim-desmos-btn" title="Open Embedded Desmos">
+                <span>📈</span>
+                <span>Calculator</span>
+              </button>
+              <button class="sim-tool-btn" id="sim-nav-grid-btn" title="View all questions">
+                <span>▦</span>
+                <span>Review Grid</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Simulator Body: Split screen -->
+          <div class="sim-body">
+            <!-- Left Pane: Question text -->
+            <div class="sim-question-pane" id="sim-question-pane">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Right Pane: Answer entry -->
+            <div class="sim-answer-pane" id="sim-answer-pane">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Simulator Footer -->
+          <div class="sim-footer">
+            <button class="btn btn-outline" id="sim-prev-btn">← Previous</button>
+            
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-secondary btn-sm" id="sim-check-btn">Instant Check</button>
+              <button class="btn btn-primary" id="sim-next-btn">Next →</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ======================================================== -->
+<!-- MODAL: COLLEGE BOARD OFFICIAL REFERENCE SHEET           -->
+<!-- ======================================================== -->
+<div class="modal-overlay" id="modal-ref-sheet">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span>📜</span>
+        <span>College Board Official Reference Sheet</span>
+      </div>
+      <button class="modal-close-btn" onclick="app.closeModal('modal-ref-sheet')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+        These formulas and diagrams are provided on every official Digital SAT Math exam:
+      </p>
+
+      <div class="ref-sheet-grid">
+        <!-- Circle -->
+        <div class="ref-item">
+          <svg viewBox="0 0 100 80">
+            <circle cx="50" cy="40" r="32" stroke="#52B09A" stroke-width="2.5" fill="#f0faf7" />
+            <line x1="50" y1="40" x2="82" y2="40" stroke="#FF7A30" stroke-width="2" />
+            <circle cx="50" cy="40" r="2.5" fill="#0F172A" />
+            <text x="64" y="36" font-size="11" font-weight="700" fill="#FF7A30">r</text>
+          </svg>
+          <div class="ref-item-title">Circle</div>
+          <div class="ref-item-latex">$A = \pi r^2$, $C = 2\pi r$</div>
+        </div>
+
+        <!-- Rectangle -->
+        <div class="ref-item">
+          <svg viewBox="0 0 100 80">
+            <rect x="15" y="20" width="70" height="40" stroke="#64BC73" stroke-width="2.5" fill="#f4faf5" />
+            <text x="48" y="74" font-size="11" font-weight="700" fill="#334155">ℓ</text>
+            <text x="90" y="44" font-size="11" font-weight="700" fill="#334155">w</text>
+          </svg>
+          <div class="ref-item-title">Rectangle</div>
+          <div class="ref-item-latex">$A = \ell w$</div>
+        </div>
+
+        <!-- Triangle -->
+        <div class="ref-item">
+          <svg viewBox="0 0 100 80">
+            <polygon points="20,65 80,65 50,15" stroke="#3B82F6" stroke-width="2.5" fill="#f0f7ff" />
+            <line x1="50" y1="15" x2="50" y2="65" stroke="#FF7A30" stroke-width="1.5" stroke-dasharray="3,3" />
+            <text x="53" y="45" font-size="11" font-weight="700" fill="#FF7A30">h</text>
+            <text x="48" y="76" font-size="11" font-weight="700" fill="#334155">b</text>
+          </svg>
+          <div class="ref-item-title">Triangle</div>
+          <div class="ref-item-latex">$A = \frac{1}{2}bh$</div>
+        </div>
+
+        <!-- Pythagorean -->
+        <div class="ref-item">
+          <svg viewBox="0 0 100 80">
+            <polygon points="20,65 80,65 20,20" stroke="#64BC73" stroke-width="2.5" fill="#f4faf5" />
+            <rect x="20" y="55" width="10" height="10" stroke="#334155" stroke-width="1" fill="none" />
+            <text x="10" y="45" font-size="11" font-weight="700" fill="#334155">a</text>
+            <text x="48" y="76" font-size="11" font-weight="700" fill="#334155">b</text>
+            <text x="54" y="38" font-size="11" font-weight="700" fill="#FF7A30">c</text>
+          </svg>
+          <div class="ref-item-title">Pythagorean Theorem</div>
+          <div class="ref-item-latex">$a^2 + b^2 = c^2$</div>
+        </div>
+
+        <!-- Special 45-45-90 -->
+        <div class="ref-item">
+          <svg viewBox="0 0 100 80">
+            <polygon points="25,65 75,65 25,15" stroke="#52B09A" stroke-width="2.5" fill="#f0faf7" />
+            <text x="48" y="76" font-size="10" font-weight="700" fill="#334155">s</text>
+            <text x="14" y="44" font-size="10" font-weight="700" fill="#334155">s</text>
+            <text x="56" y="38" font-size="10" font-weight="700" fill="#FF7A30">s√2</text>
+          </svg>
+          <div class="ref-item-title">Special: 45°-45°-90°</div>
+          <div class="ref-item-latex">$s : s : s\sqrt{2}$</div>
+        </div>
+
+        <!-- Special 30-60-90 -->
+        <div class="ref-item">
+          <svg viewBox="0 0 100 80">
+            <polygon points="15,65 85,65 15,25" stroke="#FF7A30" stroke-width="2.5" fill="#fff5ed" />
+            <text x="48" y="76" font-size="10" font-weight="700" fill="#334155">x√3</text>
+            <text x="6" y="48" font-size="10" font-weight="700" fill="#334155">x</text>
+            <text x="54" y="40" font-size="10" font-weight="700" fill="#FF7A30">2x</text>
+          </svg>
+          <div class="ref-item-title">Special: 30°-60°-90°</div>
+          <div class="ref-item-latex">$x : x\sqrt{3} : 2x$</div>
+        </div>
+
+        <!-- Cylinder Volume -->
+        <div class="ref-item">
+          <svg viewBox="0 0 100 80">
+            <ellipse cx="50" cy="20" rx="25" ry="8" stroke="#64BC73" stroke-width="2" fill="#eef8f0" />
+            <line x1="25" y1="20" x2="25" y2="60" stroke="#64BC73" stroke-width="2" />
+            <line x1="75" y1="20" x2="75" y2="60" stroke="#64BC73" stroke-width="2" />
+            <ellipse cx="50" cy="60" rx="25" ry="8" stroke="#64BC73" stroke-width="2" fill="#eef8f0" />
+            <text x="82" y="44" font-size="10" font-weight="700" fill="#334155">h</text>
+            <text x="58" y="20" font-size="10" font-weight="700" fill="#FF7A30">r</text>
+          </svg>
+          <div class="ref-item-title">Cylinder Volume</div>
+          <div class="ref-item-latex">$V = \pi r^2 h$</div>
+        </div>
+
+        <!-- Sphere Volume -->
+        <div class="ref-item">
+          <svg viewBox="0 0 100 80">
+            <circle cx="50" cy="40" r="28" stroke="#52B09A" stroke-width="2" fill="#edf8f5" />
+            <ellipse cx="50" cy="40" rx="28" ry="9" stroke="#52B09A" stroke-width="1.5" stroke-dasharray="2,2" fill="none" />
+            <line x1="50" y1="40" x2="78" y2="40" stroke="#FF7A30" stroke-width="2" />
+            <text x="62" y="36" font-size="10" font-weight="700" fill="#FF7A30">r</text>
+          </svg>
+          <div class="ref-item-title">Sphere Volume</div>
+          <div class="ref-item-latex">$V = \frac{4}{3}\pi r^3$</div>
+        </div>
+
+        <!-- Cone Volume -->
+        <div class="ref-item">
+          <svg viewBox="0 0 100 80">
+            <polygon points="25,60 75,60 50,15" stroke="#FF7A30" stroke-width="2" fill="#fff3ec" />
+            <ellipse cx="50" cy="60" rx="25" ry="7" stroke="#FF7A30" stroke-width="1.5" fill="#fff3ec" />
+            <line x1="50" y1="15" x2="50" y2="60" stroke="#334155" stroke-width="1.5" stroke-dasharray="2,2" />
+            <text x="54" y="40" font-size="10" font-weight="700" fill="#334155">h</text>
+            <text x="60" y="66" font-size="10" font-weight="700" fill="#FF7A30">r</text>
+          </svg>
+          <div class="ref-item-title">Cone Volume</div>
+          <div class="ref-item-latex">$V = \frac{1}{3}\pi r^2 h$</div>
+        </div>
+      </div>
+
+      <div style="background-color: var(--surface-alt); border-radius: var(--radius-sm); padding: 14px; margin-top: 20px; font-size: 13px; color: var(--text-body);">
+        <strong>Angular & Polygon Constants:</strong>
+        <ul style="margin-left: 20px; margin-top: 6px;">
+          <li>Number of degrees of arc in a circle is $360^{\circ}$.</li>
+          <li>Number of radians of arc in a circle is $2\pi$.</li>
+          <li>Sum of measures of the interior angles of a triangle is $180^{\circ}$.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="app.closeModal('modal-ref-sheet')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================== -->
+<!-- MODAL: EMBEDDED DESMOS GRAPHING CALCULATOR               -->
+<!-- ======================================================== -->
+<div class="modal-overlay" id="modal-desmos">
+  <div class="modal-dialog" style="max-width: 1000px; height: 85vh;">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span>📈</span>
+        <span>SAT Desmos Calculator Sandbox</span>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <a href="https://www.desmos.com/calculator" target="_blank" class="btn btn-outline btn-sm">Open in New Tab ↗</a>
+        <button class="modal-close-btn" onclick="app.closeModal('modal-desmos')">✕</button>
+      </div>
+    </div>
+    <div class="modal-body" style="padding: 0; display: flex; flex-direction: column;">
+      <iframe src="https://www.desmos.com/calculator" style="width: 100%; height: 100%; min-height: 520px; border: none;" title="Desmos Calculator"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================== -->
+<!-- MODAL: BLUEBOOK QUESTION NAVIGATOR GRID                 -->
+<!-- ======================================================== -->
+<div class="modal-overlay" id="modal-q-grid">
+  <div class="modal-dialog" style="max-width: 650px;">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span>▦</span>
+        <span>Question Navigator</span>
+      </div>
+      <button class="modal-close-btn" onclick="app.closeModal('modal-q-grid')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display: flex; gap: 16px; margin-bottom: 16px; font-size: 12.5px;">
+        <span style="display: flex; align-items: center; gap: 6px;"><span class="tier-indicator tier-a"></span> Answered</span>
+        <span style="display: flex; align-items: center; gap: 6px;"><span class="tier-indicator tier-b"></span> Flagged for Review</span>
+        <span style="display: flex; align-items: center; gap: 6px;"><span style="display:inline-block;width:8px;height:8px;background:#E2E8F0;border-radius:50%;"></span> Unanswered</span>
+      </div>
+      <div class="q-grid-container" id="sim-q-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" onclick="app.submitSimulator()">Finish & Score Test</button>
+      <button class="btn btn-outline" onclick="app.closeModal('modal-q-grid')">Resume Test</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================== -->
+<!-- MODAL: TURKISH SAT MATH GLOSSARY (120+ TERMS)           -->
+<!-- ======================================================== -->
+<div class="modal-overlay" id="modal-tr-glossary">
+  <div class="modal-dialog" style="max-width: 840px;">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span>🇹🇷</span>
+        <span>SAT Matematik Türkçe Terimler Sözlüğü (120+ Terim)</span>
+      </div>
+      <button class="modal-close-btn" onclick="app.closeModal('modal-tr-glossary')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px;">
+        Uluslararası öğrencilerin Digital SAT Matematik sınavında en sık karşılaştığı İngilizce matematiksel terimler, soru kalıpları ve Türkçe açıklamaları.
+      </p>
+      <div class="filter-toolbar" style="margin-bottom: 18px; padding: 12px 16px;">
+        <div class="search-box" style="flex: 1;">
+          <span>🔍</span>
+          <input type="text" id="tr-glossary-search" placeholder="İngilizce terim veya Türkçe karşılık ara (örn: slope, perpendicular, at least)..." oninput="app.filterTrGlossary()">
+        </div>
+        <div class="category-pills" id="tr-glossary-pills">
+          <button class="pill-btn active" data-gcat="all" onclick="app.setGlossaryFilter('all')">Tümü</button>
+          <button class="pill-btn" data-gcat="General" onclick="app.setGlossaryFilter('General')">Genel & Soru Kökleri</button>
+          <button class="pill-btn" data-gcat="Algebra" onclick="app.setGlossaryFilter('Algebra')">Cebir</button>
+          <button class="pill-btn" data-gcat="Advanced Math" onclick="app.setGlossaryFilter('Advanced Math')">İleri Matematik</button>
+          <button class="pill-btn" data-gcat="Problem Solving" onclick="app.setGlossaryFilter('Problem Solving')">Problem & Veri</button>
+          <button class="pill-btn" data-gcat="Geometry" onclick="app.setGlossaryFilter('Geometry')">Geometri</button>
+          <button class="pill-btn" data-gcat="Trigonometry" onclick="app.setGlossaryFilter('Trigonometry')">Trigonometri</button>
+        </div>
+      </div>
+      <div class="tr-glossary-grid" id="tr-glossary-container" style="max-height: 480px; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; padding: 4px;">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="app.closeModal('modal-tr-glossary')">Kapat</button>
+    </div>
+  </div>
+</div>
+
+<!-- Data Scripts -->
+<script src="js/data/formulas.js"></script>
+<script src="js/data/topics.js"></script>
+<script src="js/data/questions.js"></script>
+<script src="js/data/solutions.js"></script>
+<script src="js/data/turkish_data.js"></script>
+<script src="js/desmos-guide.js"></script>
+
+<!-- Main App Controller -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

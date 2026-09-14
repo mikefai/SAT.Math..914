@@ -1,0 +1,137 @@
+ID:1|TOPIC:Linear Equations in One Variable|Q:If $5(2x - 3) = 3(x + 9)$, what is the value of $x$?
+ID:2|TOPIC:Linear Equations in One Variable|Q:If $3x + 7 = 19$, what is the value of $6x - 5$?
+ID:3|TOPIC:Linear Functions & Modeling|Q:A rideshare service charges an initial base pickup fee of $\$3.50$ plus $\$1.75$ for every mile traveled. If a passenger's total fare before tip was $\$24.50$, how many miles was the trip?
+ID:4|TOPIC:Slope Formula|Q:Line $k$ in the $xy$-plane passes through the points $(-2, 5)$ and $(4, -7)$. What is the slope of line $k$?
+ID:5|TOPIC:Linear Equations in Two Variables|Q:What is the $y$-intercept of the line given by the equation $4x - 6y = 18$?
+ID:6|TOPIC:Linear Inequalities|Q:Which inequality represents all solutions to $3(x - 2) \le 5x + 8$?
+ID:7|TOPIC:Systems of Two Linear Equations|Q:Consider the system of equations below:
+$$\begin{aligned} 2x + y &= 11 \\ x - 3y &= -5 \end{aligned}$$
+What is the value of $x + y$?
+ID:8|TOPIC:Linear Equations: Infinite Solutions|Q:In the equation $2(3x + 4) = 6x + k$, $k$ is a constant. If the equation has infinitely many solutions, what is the value of $k$?
+ID:9|TOPIC:Parallel & Perpendicular Lines|Q:Line $L$ is defined by the equation $y = -\frac{3}{4}x + 2$. Line $P$ is perpendicular to line $L$. What is the slope of line $P$?
+ID:10|TOPIC:Linear Functions & Modeling|Q:The table below shows values for a linear function $f(x)$:
+
+| $x$ | $f(x)$ |
+| :---: | :---: |
+| 1 | 7 |
+| 3 | 13 |
+| 5 | 19 |
+
+What is the value of $f(8)$?
+ID:11|TOPIC:Linear Inequalities Modeling|Q:A local bakery sells blueberry muffins for $\$2$ each and cinnamon bagels for $\$3$ each. The baker needs to earn at least $\$120$ today from selling $m$ muffins and $b$ bagels. Which inequality represents this situation?
+ID:12|TOPIC:Linear Functions Interpretation|Q:The height $H$, in inches, of a newly planted sapling $t$ months after being planted is modeled by $H = 2.4t + 18$. Which statement is the best interpretation of the number $2.4$ in this context?
+ID:13|TOPIC:Systems of Two Linear Equations|Q:A piggy bank contains a total of 45 coins, consisting only of nickels (worth $\$0.05$ each) and dimes (worth $\$0.10$ each). The total value of all coins is $\$3.40$. How many dimes are in the piggy bank?
+ID:14|TOPIC:Linear Intercepts|Q:What is the $x$-intercept of the graph of $5x - 2y = 20$ in the $xy$-plane?
+ID:15|TOPIC:Linear Points & Equations|Q:If the point $(k, 9)$ lies on the line given by the equation $y = 3x - 6$, what is the value of $k$?
+ID:16|TOPIC:Systems: No Solution|Q:The system of equations below has no solution:
+$$\begin{aligned} 4x - 2y &= 8 \\ 6x - ky &= 15 \end{aligned}$$
+What is the value of the constant $k$?
+ID:17|TOPIC:Absolute Value Equations|Q:What is the positive solution to the equation $|2x - 5| = 9$?
+ID:18|TOPIC:Systems of Inequalities|Q:Which of the following points $(x, y)$ is a solution to the system of inequalities $y > 2x - 3$ and $y \le -x + 4$?
+ID:19|TOPIC:Quadratic Factoring|Q:What are the solutions to the quadratic equation $x^2 - 7x + 12 = 0$?
+ID:20|TOPIC:Quadratic Formula|Q:The solutions to the equation $x^2 - 6x + 4 = 0$ can be written in the form $3 \pm \sqrt{k}$, where $k$ is an integer. What is the value of $k$?
+ID:21|TOPIC:Vertex Form|Q:The function $f(x) = 3(x - 4)^2 + 7$ is graphed in the $xy$-plane. What is the minimum value of $f(x)$?
+ID:22|TOPIC:Discriminant|Q:How many real solutions does the quadratic equation $2x^2 - 4x + 5 = 0$ have?
+ID:23|TOPIC:Vieta's Formulas|Q:What is the sum of the solutions to the quadratic equation $3x^2 - 15x + 8 = 0$?
+ID:24|TOPIC:Radical Equations|Q:What is the solution set of the equation $\sqrt{2x + 14} = x + 3$?
+ID:25|TOPIC:Exponent Rules|Q:Which expression is equivalent to $\frac{(x^3 y^2)^4}{x^5 y^6}$ for all positive values of $x$ and $y$?
+ID:26|TOPIC:Fractional Exponents|Q:What is the value of $27^{\frac{4}{3}}$?
+ID:27|TOPIC:Rational Expressions|Q:Which expression is equivalent to $\frac{x^2 - 9}{2x + 6}$ for all $x \neq -3$?
+ID:28|TOPIC:Exponential Growth|Q:A town's population was 15,000 in the year 2020 and has been increasing at an annual rate of $4\%$. Which function models the population $P(t)$ of the town $t$ years after 2020?
+ID:29|TOPIC:Circle Equations|Q:What is the center and radius of the circle given by $(x - 5)^2 + (y + 2)^2 = 36$?
+ID:30|TOPIC:Function Notation|Q:If $f(x) = 2x^2 - 3x + 1$, what is the value of $f(-2)$?
+ID:31|TOPIC:Difference of Squares|Q:If $x^2 - y^2 = 48$ and $x - y = 6$, what is the value of $x + y$?
+ID:32|TOPIC:Vertex of Parabola|Q:What is the $x$-coordinate of the vertex of the parabola $y = -2x^2 + 8x - 3$?
+ID:33|TOPIC:Exponential Decay|Q:A computer purchased for $\$1,200$ depreciates in value by $15\%$ each year. Which equation models the computer's value $V$, in dollars, $t$ years after purchase?
+ID:34|TOPIC:Polynomial Roots|Q:What is the sum of the solutions to the equation $(x - 2)(x + 4)(x - 5) = 0$?
+ID:35|TOPIC:Radical Expressions|Q:Which expression is equivalent to $\sqrt{72x^4}$ for all $x > 0$?
+ID:36|TOPIC:Rational Equations|Q:If $\frac{1}{x} + \frac{1}{2x} = \frac{3}{8}$, what is the value of $x$?
+ID:37|TOPIC:Ratios & Proportions|Q:In a pre-election survey of 800 registered voters, 480 stated they would vote for Measure A. Based on this ratio, how many of the 6,000 registered voters in the town would be expected to vote for Measure A?
+ID:38|TOPIC:Percentages|Q:An item originally priced at $\$80$ is increased in price by $25\%$. The new price is then discounted by $20\%$. What is the final price of the item?
+ID:39|TOPIC:Unit Conversions|Q:A vehicle travels at a constant speed of 88 feet per second. Which of the following is closest to the speed of the vehicle in miles per hour? ($1\text{ mile} = 5,280\text{ feet}$)
+ID:40|TOPIC:Two-Way Tables & Probability|Q:The table below shows the distribution of 120 high school students who chose a foreign language elective:
+
+| | Spanish | French | German | Total |
+| :--- | :---: | :---: | :---: | :---: |
+| 10th Grade | 35 | 15 | 10 | 60 |
+| 11th Grade | 25 | 20 | 15 | 60 |
+| Total | 60 | 35 | 25 | 120 |
+
+If a 10th-grade student is selected at random, what is the probability that the student chose French?
+ID:41|TOPIC:Measures of Center|Q:A dataset consists of five values: $8, 12, 15, 17,$ and $x$. If the mean of the dataset is 14, what is the value of $x$?
+ID:42|TOPIC:Scatterplots & Models|Q:A scatterplot shows the relationship between studying time $x$, in hours, and test score $y$. The line of best fit is given by $y = 4.5x + 55$. Based on this model, what is the predicted test score for a student who studies for 8 hours?
+ID:43|TOPIC:Margin of Error|Q:A random sample of 500 voters in a city found that $54\%$ support a proposed city park, with an associated margin of error of $\pm 4\%$ at a $95\%$ confidence level. Which of the following is the most appropriate conclusion?
+ID:44|TOPIC:Triangles & Pythagorean|Q:A right triangle has a hypotenuse of length 13 cm and one leg of length 5 cm. What is the area of the triangle, in square centimeters?
+ID:45|TOPIC:Special Right Triangles|Q:In a $30^{\circ}-60^{\circ}-90^{\circ}$ triangle, the hypotenuse has a length of 16. What is the length of the side opposite the $60^{\circ}$ angle?
+ID:46|TOPIC:Volume of Cylinder|Q:A right circular cylinder has a base radius of 3 cm and a height of 10 cm. The volume of the cylinder can be expressed as $k\pi\text{ cm}^3$. What is the value of $k$?
+ID:47|TOPIC:Right Triangle Trigonometry|Q:In right triangle $ABC$, the measure of angle $C$ is $90^{\circ}$. The hypotenuse $AB = 25$ and leg $BC = 7$. What is the value of $\cos A$?
+ID:48|TOPIC:Trigonometric Co-Functions|Q:If $\sin(x^{\circ}) = \cos(52^{\circ})$, where $0^{\circ} < x < 90^{\circ}$, what is the value of $x$?
+ID:49|TOPIC:Circle Arc Length|Q:A circle with radius 9 cm has a central angle of $40^{\circ}$. What is the length of the arc, in centimeters, intercepted by this angle?
+ID:50|TOPIC:Lines & Angles|Q:Two parallel lines $L_1$ and $L_2$ are intersected by a transversal line $T$. If one of the interior angles measures $68^{\circ}$, what is the measure of its consecutive interior angle?
+ID:51|TOPIC:Systems: Infinite Solutions|Q:The system of linear equations below has infinitely many solutions:
+$$\begin{aligned} kx - 6y &= 18 \\ 4x - 3y &= p \end{aligned}$$
+where $k$ and $p$ are constants. What is the value of $k + p$?
+ID:52|TOPIC:Linear Inequalities|Q:What is the greatest integer value of $x$ that satisfies the inequality $-\frac{2}{3}(x - 4) + 1 \ge \frac{1}{2}(x + 5) - 3$?
+ID:53|TOPIC:Linear Modeling Piecewise|Q:A cloud computing provider charges $\$40$ per month for the first 100 gigabytes (GB) of data storage used, and $\$0.25$ for each additional GB used beyond 100 GB. If a client was billed $\$72.50$ for one month, how many total GB of data storage did the client use?
+ID:54|TOPIC:Perpendicular Line Parameters|Q:Line $L_1$ is defined by $px + 4y = 12$, and line $L_2$ is defined by $3x - 5y = 20$, where $p$ is a constant. If line $L_1$ is perpendicular to line $L_2$, what is the value of $p$?
+ID:55|TOPIC:Systems: Three Lines Concurrency|Q:The three lines given by $2x + 3y = 13$, $4x - y = 5$, and $y = mx + 2$ all intersect at the same point in the $xy$-plane. What is the value of the slope $m$?
+ID:56|TOPIC:Linear Equations: No Solution|Q:In the equation $a(3x - 2) + 4x = 19x - 14$, $a$ is a constant. For what value of $a$ does the equation have no solution?
+ID:57|TOPIC:Linear Inequalities Constraint|Q:A freight company transports small shipping crates of weight 40 kg each and large crates of weight 75 kg each. A transport truck can carry a maximum total weight of 3,600 kg. If the truck must transport at least 15 large crates, what is the maximum number of small crates that can be transported on the truck?
+ID:58|TOPIC:Systems with Unknown Parameter|Q:In the system of equations below, $c$ is a constant:
+$$\begin{aligned} 3x - 5y &= 14 \\ 9x - 15y &= c \end{aligned}$$
+If the system has no solution, which of the following could NOT be the value of $c$?
+(Enter the exact numerical value that $c$ cannot equal)
+ID:59|TOPIC:Linear Functions Word Problem|Q:An electric vehicle's battery charges at a rate of 1.2% per minute from 0% to 80% capacity, after which it switches to a trickle charging rate of 0.4% per minute until it reaches 100% capacity. If the battery is initially at 20% capacity, how many total minutes will it take to reach 100% capacity?
+ID:60|TOPIC:Linear Systems: Parameter Products|Q:The system of linear equations below has infinitely many solutions:
+$$\begin{aligned} 2x + cy &= 7 \\ kx + 8y &= 14 \end{aligned}$$
+where $c$ and $k$ are positive constants. What is the value of $c \cdot k$?
+ID:61|TOPIC:Absolute Value Inequalities|Q:How many integer values of $x$ satisfy the inequality $|2x - 7| \le 11$?
+ID:62|TOPIC:Linear Rate Interpretation|Q:The atmospheric pressure $P$, in kilopascals (kPa), at an altitude of $h$ kilometers above sea level is approximated by a linear model for altitudes between 0 and 5 km. If the pressure is 101.3 kPa at sea level ($h = 0$) and decreases by 11.8 kPa for every 1-kilometer increase in altitude, which equation gives the altitude $h$ in terms of pressure $P$?
+ID:63|TOPIC:Linear Intercept Conditions|Q:Line $k$ in the $xy$-plane has equation $Ax + By = C$, where $A > 0, B < 0,$ and $C > 0$. Which quadrant does line $k$ NOT pass through?
+ID:64|TOPIC:Linear Optimization|Q:A region in the $xy$-plane is bounded by the vertices $(1, 2), (1, 6), (5, 2),$ and $(5, 4)$. What is the maximum value of the expression $3x - 2y$ over this region?
+ID:65|TOPIC:Compound Inequalities|Q:How many integer solutions are there to the compound inequality $13 < 4x - 3 \le 37$?
+ID:66|TOPIC:Linear & Quadratic Geometry|Q:Line $L$ passes through the origin $(0, 0)$ and through the vertex of the parabola $y = -x^2 + 6x - 5$. What is the slope of line $L$?
+ID:67|TOPIC:Speed Distance Time Systems|Q:A motorized canoe travels 24 miles upstream against a current in 4 hours. The return trip downstream with the same current takes 2 hours. What is the speed of the current, in miles per hour?
+ID:68|TOPIC:Diophantine Equations|Q:How many pairs of positive integers $(x, y)$ satisfy the equation $3x + 7y = 100$?
+ID:69|TOPIC:Discriminant & Tangency|Q:For what value of the constant $c$ does the line $y = 4x + c$ intersect the parabola $y = x^2 - 2x + 10$ at exactly one point?
+ID:70|TOPIC:Quadratic Conjugate Roots|Q:If $x = 3 + \sqrt{5}$ is a solution to the quadratic equation $x^2 - 6x + k = 0$, where $k$ is a constant, what is the value of $k$?
+ID:71|TOPIC:Vieta's Formulas Advanced|Q:If $r$ and $s$ are the two solutions to the quadratic equation $2x^2 - 10x + 3 = 0$, what is the value of $\frac{1}{r} + \frac{1}{s}$?
+ID:72|TOPIC:Rational Function Discontinuities|Q:The function $f(x)$ is defined by $f(x) = \frac{x^2 - 4}{x^2 + 5x + 6}$. What is the sum of all values of $x$ for which $f(x)$ is undefined?
+ID:73|TOPIC:Exponential Rescaling|Q:A population of bacteria in a culture begins with 250 cells and doubles every 40 minutes. Which function models the population $B(t)$ as a function of time $t$, in hours?
+ID:74|TOPIC:Radical Equations Extraneous|Q:What is the complete solution set for the equation $x - \sqrt{x + 2} = 4$?
+ID:75|TOPIC:Completing Square for Circles|Q:A circle in the $xy$-plane is described by the equation $2x^2 + 2y^2 - 12x + 16y - 22 = 0$. What is the radius of the circle?
+ID:76|TOPIC:Nonlinear System Intersections|Q:The system of equations below consists of two parabolas:
+$$\begin{aligned} y &= x^2 - 4x + 3 \\ y &= -x^2 + 2x + 11 \end{aligned}$$
+What is the positive $x$-coordinate of the points of intersection?
+ID:77|TOPIC:Function Transformations|Q:The graph of $y = f(x)$ has a vertex at $(3, -5)$. The function $g$ is defined by $g(x) = f(x + 4) + 7$. What are the coordinates of the vertex of the graph of $y = g(x)$?
+ID:78|TOPIC:Polynomial Remainder Theorem|Q:If the polynomial $P(x) = 2x^3 - kx^2 + 5x - 6$ is divisible by $(x - 2)$ with a remainder of 0, what is the value of the constant $k$?
+ID:79|TOPIC:Advanced Exponents|Q:The expression $8^{\frac{2x}{3}} \cdot 16^{-\frac{x}{4}}$ can be rewritten in the form $2^{kx}$, where $k$ is a constant. What is the value of $k$?
+ID:80|TOPIC:Constrained Quadratic Extrema|Q:What is the minimum value of the quadratic function $f(x) = x^2 - 6x + 14$ on the closed interval $[4, 7]$?
+ID:81|TOPIC:Circle & Line Secant|Q:A circle in the $xy$-plane has equation $(x - 1)^2 + (y - 2)^2 = 25$. The vertical line $x = 4$ intersects the circle at two points, $P$ and $Q$. What is the distance between points $P$ and $Q$?
+ID:82|TOPIC:Rational Expression Operations|Q:The expression $\frac{3}{x - 2} - \frac{2}{x + 1}$ can be written in the form $\frac{ax + b}{(x - 2)(x + 1)}$, where $a$ and $b$ are constants. What is the value of $a + b$?
+ID:83|TOPIC:Quartic Polynomial Roots|Q:What is the product of all real solutions to the equation $x^4 - 13x^2 + 36 = 0$?
+ID:84|TOPIC:Exponential Half-Life|Q:A radioactive isotope has a half-life of 12 days. If an initial sample has a mass of 80 grams, what percentage of the initial mass remains after 36 days?
+ID:85|TOPIC:Nonlinear Inequalities|Q:How many integer values of $x$ satisfy the inequality $(x - 3)(x + 5) \le 0$?
+ID:86|TOPIC:Parabola Construction|Q:A parabola has vertex $(2, 9)$ and passes through the point $(5, -9)$. What is the $y$-intercept of this parabola?
+ID:87|TOPIC:Density & Multi-Step Conversion|Q:A solid brass cylinder has a base diameter of 6 cm and a height of 15 cm. The density of the brass alloy is 8.4 grams per cubic centimeter. What is the total mass of the cylinder, in kilograms, rounded to the nearest tenth of a kilogram? (Use $\pi \approx 3.14159$)
+ID:88|TOPIC:Reverse Percentages|Q:A jacket is on sale at a discount of $20\%$ off its original price. A customer then pays a $7\%$ state sales tax on the discounted sale price, bringing the final total paid to $\$102.72$. What was the original price of the jacket before the discount and tax?
+ID:89|TOPIC:Conditional Probability|Q:The table below shows the results of a clinical trial for an allergy treatment:
+
+| | Significant Relief | Moderate Relief | No Relief | Total |
+| :--- | :---: | :---: | :---: | :---: |
+| Treatment Group | 54 | 26 | 20 | 100 |
+| Placebo Group | 18 | 32 | 50 | 100 |
+| Total | 72 | 58 | 70 | 200 |
+
+Given that a participant experienced some relief (either significant or moderate), what is the probability that the participant was in the Treatment Group?
+ID:90|TOPIC:Standard Deviation & Spread|Q:Two classes took the same 100-point physics exam. Both classes had an identical mean score of 78 points. In Class A, the scores ranged from 72 to 84 points, with 80% of students scoring between 76 and 80. In Class B, the scores ranged from 55 to 98 points, with scores evenly distributed across the range. Which statement must be true?
+ID:91|TOPIC:Margin of Error Scaling|Q:A polling organization conducted a survey of $n = 150$ voters, producing an estimate with a margin of error of $E$. If the organization wants to reduce the margin of error to $\frac{E}{3}$ while maintaining the same confidence level, what new sample size must they survey?
+ID:92|TOPIC:Mixture & Concentration|Q:A chemistry lab has a 15% hydrochloric acid solution and a 40% hydrochloric acid solution. A chemist mixes 10 liters of the 15% solution with $x$ liters of the 40% solution to produce a mixture that is 25% hydrochloric acid. What is the value of $x$?
+ID:93|TOPIC:Scatterplot Residuals|Q:A linear model $y = -1.5x + 30$ is fitted to a dataset. For the data point $(8, 16)$, what is the residual (where $\text{Residual} = \text{Actual } y - \text{Predicted } y$)?
+ID:94|TOPIC:Similar Figures Area Ratio|Q:Triangles $ABC$ and $DEF$ are similar, where vertices $A, B,$ and $C$ correspond to $D, E,$ and $F$, respectively. The length of side $AB$ is 6 cm and the length of side $DE$ is 15 cm. If the area of triangle $ABC$ is 24 square centimeters, what is the area, in square centimeters, of triangle $DEF$?
+ID:95|TOPIC:Tangent Line to Circle|Q:A circle centered at the origin $(0, 0)$ is tangent to the line $3x + 4y = 50$. What is the radius of the circle?
+ID:96|TOPIC:Inscribed Angle Theorem|Q:Points $A, B,$ and $C$ lie on a circle. The inscribed angle $\angle ABC$ measures $54^{\circ}$. What is the measure of the minor central angle $\angle AOC$, where $O$ is the center of the circle?
+ID:97|TOPIC:Trig Co-Function Algebraic|Q:If $\sin(3x + 14^{\circ}) = \cos(2x + 21^{\circ})$, where both angle measures are acute, what is the value of $x$?
+ID:98|TOPIC:Sector Area & Arc Length|Q:In a circle of radius $r$, a sector with central angle $\theta$ has an area of $24\pi$ square units and an arc length of $4\pi$ units. What is the radius $r$ of the circle?
+ID:99|TOPIC:3D Inscribed Cone & Cylinder|Q:A right circular cone is inscribed inside a right circular cylinder such that they share the exact same circular base and height. If the volume of the cylinder is $72\pi\text{ cm}^3$, what is the volume of the space inside the cylinder that is OUTSIDE the cone?
+ID:100|TOPIC:Coordinate Geometry Polygon|Q:A quadrilateral in the $xy$-plane has vertices at $A(0, 0), B(6, 0), C(8, 4),$ and $D(2, 4)$. What is the area of quadrilateral $ABCD$?
