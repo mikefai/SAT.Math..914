@@ -162,29 +162,122 @@
               </div>
               <div class="notes-win-actions">
                 <span class="notes-save-status" id="notes-save-status">✓ Saved</span>
-                <button class="notes-icon-btn" onclick="app.exportNotes()" title="Download notes as text file">📥</button>
-                <button class="notes-icon-btn" onclick="app.clearNotes()" title="Clear notes">🗑️</button>
+                <button class="notes-icon-btn" onclick="app.exportNotes()" title="Download notes or drawing">📥</button>
+                <button class="notes-icon-btn" onclick="app.clearCurrentNotesTab()" title="Clear active tab">🗑️</button>
                 <button class="notes-icon-btn" onclick="app.toggleNotesWindow()" title="Close notes window">✕</button>
               </div>
             </div>
 
-            <div class="notes-template-bar">
-              <button class="notes-chip-btn" onclick="app.insertNoteTemplate('formula')">+ Formula Trap</button>
-              <button class="notes-chip-btn" onclick="app.insertNoteTemplate('desmos')">+ Desmos Hack</button>
-              <button class="notes-chip-btn" onclick="app.insertNoteTemplate('question')">+ Review Q#</button>
-              <button class="notes-chip-btn" onclick="app.insertNoteTemplate('checklist')">+ Goal</button>
+            <!-- Notes Mode Switcher Tabs -->
+            <div class="notes-mode-tabs">
+              <button class="notes-mode-tab active" id="tab-notes-text" onclick="app.switchNotesMode('text')">
+                <span>✍️ Text Notes</span>
+              </button>
+              <button class="notes-mode-tab" id="tab-notes-draw" onclick="app.switchNotesMode('draw')">
+                <span>🎨 Pen & Scratchpad</span>
+                <span class="notes-tab-indicator" id="draw-has-content-dot" style="display: none;"></span>
+              </button>
             </div>
 
-            <textarea 
-              class="notes-textarea" 
-              id="floating-notes-textarea" 
-              placeholder="Jot down formula edge cases, Desmos regressions to practice, or tricky questions... Auto-saved in real-time."
-              oninput="app.onNotesInput()"
-            ></textarea>
+            <!-- TAB PANE 1: TEXT NOTES -->
+            <div class="notes-tab-pane active" id="notes-pane-text">
+              <div class="notes-template-bar">
+                <button class="notes-chip-btn" onclick="app.insertNoteTemplate('formula')">+ Formula Trap</button>
+                <button class="notes-chip-btn" onclick="app.insertNoteTemplate('desmos')">+ Desmos Hack</button>
+                <button class="notes-chip-btn" onclick="app.insertNoteTemplate('question')">+ Review Q#</button>
+                <button class="notes-chip-btn" onclick="app.insertNoteTemplate('checklist')">+ Goal</button>
+              </div>
 
-            <div class="notes-win-footer">
-              <span id="notes-word-count">0 words • 0 chars</span>
-              <span>Auto-saved locally</span>
+              <textarea 
+                class="notes-textarea" 
+                id="floating-notes-textarea" 
+                placeholder="Jot down formula edge cases, Desmos regressions to practice, or tricky questions... Auto-saved in real-time."
+                oninput="app.onNotesInput()"
+              ></textarea>
+
+              <div class="notes-win-footer">
+                <span id="notes-word-count">0 words • 0 chars</span>
+                <span>Auto-saved locally</span>
+              </div>
+            </div>
+
+            <!-- TAB PANE 2: PEN DRAWING & SCRATCHPAD -->
+            <div class="notes-tab-pane" id="notes-pane-draw" style="display: none;">
+              <!-- Pen Drawing Toolbar -->
+              <div class="draw-toolbar">
+                <!-- Tool Selector -->
+                <div class="draw-tool-group">
+                  <button class="draw-btn active" id="draw-tool-pen" onclick="app.setDrawTool('pen')" title="Pen (Smooth Drawing)">
+                    <span>✏️</span>
+                    <span class="draw-btn-lbl">Pen</span>
+                  </button>
+                  <button class="draw-btn" id="draw-tool-highlighter" onclick="app.setDrawTool('highlighter')" title="Highlighter (Semi-transparent)">
+                    <span>🖍️</span>
+                    <span class="draw-btn-lbl">Highlight</span>
+                  </button>
+                  <button class="draw-btn" id="draw-tool-eraser" onclick="app.setDrawTool('eraser')" title="Eraser">
+                    <span>🧼</span>
+                    <span class="draw-btn-lbl">Eraser</span>
+                  </button>
+                </div>
+
+                <div class="draw-separator"></div>
+
+                <!-- Color Palette -->
+                <div class="draw-color-palette" id="draw-color-palette">
+                  <button class="draw-swatch active" style="background-color: #0F172A;" onclick="app.setDrawColor('#0F172A')" title="Ink Black"></button>
+                  <button class="draw-swatch" style="background-color: #64BC73;" onclick="app.setDrawColor('#64BC73')" title="Emerald Green"></button>
+                  <button class="draw-swatch" style="background-color: #FF7A30;" onclick="app.setDrawColor('#FF7A30')" title="SAT Orange"></button>
+                  <button class="draw-swatch" style="background-color: #2563EB;" onclick="app.setDrawColor('#2563EB')" title="Blue"></button>
+                  <button class="draw-swatch" style="background-color: #DC2626;" onclick="app.setDrawColor('#DC2626')" title="Red"></button>
+                </div>
+
+                <div class="draw-separator"></div>
+
+                <!-- Stroke Sizes -->
+                <div class="draw-size-group">
+                  <button class="draw-size-btn active" id="draw-size-fine" onclick="app.setDrawSize(2)" title="Fine (2px)">
+                    <span class="draw-size-dot dot-sm"></span>
+                  </button>
+                  <button class="draw-size-btn" id="draw-size-med" onclick="app.setDrawSize(4)" title="Medium (4px)">
+                    <span class="draw-size-dot dot-md"></span>
+                  </button>
+                  <button class="draw-size-btn" id="draw-size-thick" onclick="app.setDrawSize(8)" title="Thick (8px)">
+                    <span class="draw-size-dot dot-lg"></span>
+                  </button>
+                </div>
+
+                <div class="draw-separator"></div>
+
+                <!-- Action Utilities -->
+                <div class="draw-action-group">
+                  <button class="draw-btn" id="draw-btn-grid" onclick="app.toggleDrawGrid()" title="Toggle Math Graph Paper Grid">
+                    <span>▦</span>
+                  </button>
+                  <button class="draw-btn" id="draw-btn-undo" onclick="app.undoDraw()" title="Undo (Ctrl+Z)">
+                    <span>↩️</span>
+                  </button>
+                  <button class="draw-btn" id="draw-btn-redo" onclick="app.redoDraw()" title="Redo (Ctrl+Y)">
+                    <span>↪️</span>
+                  </button>
+                  <button class="draw-btn" onclick="app.clearDrawing()" title="Clear Scratchpad">
+                    <span>🗑️</span>
+                  </button>
+                  <button class="draw-btn" onclick="app.exportDrawing()" title="Download Drawing as PNG">
+                    <span>💾</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Canvas Container -->
+              <div class="drawing-canvas-wrap with-grid" id="drawing-canvas-wrap">
+                <canvas id="notes-drawing-canvas"></canvas>
+              </div>
+
+              <div class="notes-win-footer">
+                <span id="drawing-status-text">Touch, Stylus & Mouse • High-DPI Canvas</span>
+                <span id="drawing-undo-info">0 strokes</span>
+              </div>
             </div>
           </div>
         </div>

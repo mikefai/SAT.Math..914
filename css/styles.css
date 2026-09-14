@@ -1900,8 +1900,8 @@ html, body {
   position: absolute;
   top: calc(100% + 14px);
   left: 0;
-  width: 480px;
-  max-width: calc(100vw - 340px);
+  width: 540px;
+  max-width: calc(100vw - 320px);
   background: var(--surface);
   border: 1.5px solid var(--border);
   border-radius: var(--radius-lg);
@@ -1971,6 +1971,58 @@ html, body {
   color: var(--text-main);
 }
 
+/* Notes Mode Tabs (Text Notes vs Pen & Scratchpad) */
+.notes-mode-tabs {
+  display: flex;
+  background: #F1F5F9;
+  padding: 6px 14px;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.notes-mode-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 7px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+
+.notes-mode-tab:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.notes-mode-tab.active {
+  background: var(--surface);
+  color: var(--primary-dark);
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.notes-tab-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: inline-block;
+}
+
+.notes-tab-pane {
+  display: flex;
+  flex-direction: column;
+}
+
 .notes-template-bar {
   padding: 10px 14px;
   background: #FCFDFD;
@@ -2018,14 +2070,162 @@ html, body {
   font-style: italic;
 }
 
+/* ======================================================= */
+/* PEN & SCRATCHPAD DRAWING TOOLBAR & CANVAS               */
+/* ======================================================= */
+.draw-toolbar {
+  padding: 8px 12px;
+  background: #FCFDFD;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  user-select: none;
+}
+
+.draw-tool-group,
+.draw-size-group,
+.draw-action-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.draw-separator {
+  width: 1px;
+  height: 22px;
+  background: var(--border);
+  margin: 0 3px;
+}
+
+.draw-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 5px 9px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-body);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.draw-btn:hover {
+  background: var(--surface-alt);
+  border-color: #cbd5e1;
+  color: var(--text-main);
+}
+
+.draw-btn.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.draw-btn-lbl {
+  font-size: 11px;
+}
+
+/* Color Swatches */
+.draw-color-palette {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.draw-swatch {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 0 1px #CBD5E1;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.draw-swatch:hover {
+  transform: scale(1.15);
+}
+
+.draw-swatch.active {
+  box-shadow: 0 0 0 2px var(--primary), 0 2px 5px rgba(0, 0, 0, 0.15);
+  transform: scale(1.2);
+}
+
+/* Stroke Sizes */
+.draw-size-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.draw-size-btn:hover {
+  background: var(--surface-alt);
+}
+
+.draw-size-btn.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.draw-size-dot {
+  background: var(--text-main);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.draw-size-dot.dot-sm { width: 3px; height: 3px; }
+.draw-size-dot.dot-md { width: 6px; height: 6px; }
+.draw-size-dot.dot-lg { width: 9px; height: 9px; }
+
+/* Drawing Canvas Container */
+.drawing-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 310px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.drawing-canvas-wrap.with-grid {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: -1px -1px;
+}
+
+#notes-drawing-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+  touch-action: none;
+}
+
 .notes-win-footer {
-  padding: 12px 18px;
+  padding: 11px 16px;
   border-top: 1px solid var(--border);
   background: var(--surface-alt);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-muted);
 }
 

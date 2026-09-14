@@ -43,6 +43,7 @@ const app = {
     this.renderSectionTrDrawers();
     this.renderTrGlossary();
     this.loadNotes();
+    this.loadDrawing();
     this.updateProgressIndicator();
     this.renderMath();
   },
@@ -130,6 +131,31 @@ const app = {
         sidebar.classList.toggle("open");
       });
     }
+
+    // Scratchpad Keyboard Shortcuts (Ctrl+Z Undo, Ctrl+Y Redo)
+    window.addEventListener("keydown", (e) => {
+      if (this.notesState.isOpen && this.notesState.activeTab === "draw") {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
+          if (e.shiftKey) {
+            e.preventDefault();
+            this.redoDraw();
+          } else {
+            e.preventDefault();
+            this.undoDraw();
+          }
+        } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "y") {
+          e.preventDefault();
+          this.redoDraw();
+        }
+      }
+    });
+
+    // Scratchpad Resize Listener
+    window.addEventListener("resize", () => {
+      if (this.notesState.isOpen && this.notesState.activeTab === "draw" && this.drawState.canvasInitialized) {
+        this.setupCanvasResolution();
+      }
+    });
 
     // Modal Buttons in Header
     document.getElementById("btn-open-ref-sheet").addEventListener("click", () => this.openModal("modal-ref-sheet"));
@@ -1140,6 +1166,25 @@ const app = {
   notesState: {
     isOpen: false,
     content: "",
+    saveTimeout: null,
+    activeTab: "text" // "text" | "draw"
+  },
+
+  drawState: {
+    tool: "pen", // "pen" | "highlighter" | "eraser"
+    color: "#0F172A",
+    size: 2,
+    isDrawing: false,
+    hasGrid: true,
+    undoStack: [],
+    redoStack: [],
+    maxHistory: 25,
+    canvasInitialized: false,
+    hasDrawing: false,
+    canvas: null,
+    ctx: null,
+    lastX: 0,
+    lastY: 0,
     saveTimeout: null
   },
 
@@ -1150,8 +1195,50 @@ const app = {
     if (win) win.classList.toggle("open", this.notesState.isOpen);
     if (btn) btn.classList.toggle("active", this.notesState.isOpen);
     if (this.notesState.isOpen) {
+      if (this.notesState.activeTab === "text") {
+        const textarea = document.getElementById("floating-notes-textarea");
+        if (textarea) textarea.focus();
+      } else if (this.notesState.activeTab === "draw") {
+        requestAnimationFrame(() => {
+          if (!this.drawState.canvasInitialized) {
+            this.initDrawingCanvas();
+          } else {
+            this.setupCanvasResolution();
+          }
+        });
+      }
+    }
+  },
+
+  // Switch between "text" and "draw" modes
+  switchNotesMode(mode) {
+    this.notesState.activeTab = mode;
+
+    const tabText = document.getElementById("tab-notes-text");
+    const tabDraw = document.getElementById("tab-notes-draw");
+    const paneText = document.getElementById("notes-pane-text");
+    const paneDraw = document.getElementById("notes-pane-draw");
+
+    if (mode === "text") {
+      if (tabText) tabText.classList.add("active");
+      if (tabDraw) tabDraw.classList.remove("active");
+      if (paneText) paneText.style.display = "flex";
+      if (paneDraw) paneDraw.style.display = "none";
       const textarea = document.getElementById("floating-notes-textarea");
       if (textarea) textarea.focus();
+    } else {
+      if (tabText) tabText.classList.remove("active");
+      if (tabDraw) tabDraw.classList.add("active");
+      if (paneText) paneText.style.display = "none";
+      if (paneDraw) paneDraw.style.display = "flex";
+
+      requestAnimationFrame(() => {
+        if (!this.drawState.canvasInitialized) {
+          this.initDrawingCanvas();
+        } else {
+          this.setupCanvasResolution();
+        }
+      });
     }
   },
 
@@ -1244,23 +1331,6 @@ const app = {
     this.onNotesInput();
   },
 
-  exportNotes() {
-    const text = this.notesState.content || "";
-    if (!text.trim()) {
-      alert("Your study notes are currently empty!");
-      return;
-    }
-    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `SAT_Math_2026_Study_Notes_${new Date().toISOString().slice(0,10)}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  },
-
   clearNotes() {
     if (!this.notesState.content.trim()) return;
     if (confirm("Are you sure you want to clear your study notes? This action cannot be undone.")) {
@@ -1271,6 +1341,429 @@ const app = {
       this.updateNotesStats();
       const statusEl = document.getElementById("notes-save-status");
       if (statusEl) statusEl.innerHTML = `<span style="color:var(--text-muted);">Cleared</span>`;
+    }
+  },
+
+  // ========================================================
+  // PEN DRAWING & MATH SCRATCHPAD CONTROLLERS
+  // ========================================================
+  loadDrawing() {
+    try {
+      const saved = localStorage.getItem("sat_study_drawing");
+      if (saved) {
+        this.drawState.hasDrawing = true;
+        const dot = document.getElementById("draw-has-content-dot");
+        if (dot) dot.style.display = "inline-block";
+      }
+    } catch (e) {
+      console.warn("Could not inspect saved drawing", e);
+    }
+  },
+
+  initDrawingCanvas() {
+    const canvas = document.getElementById("notes-drawing-canvas");
+    const wrap = document.getElementById("drawing-canvas-wrap");
+    if (!canvas || !wrap) return;
+
+    this.setupCanvasResolution();
+    this.drawState.canvasInitialized = true;
+
+    // Restore saved drawing if available
+    const saved = localStorage.getItem("sat_study_drawing");
+    if (saved) {
+      this.restoreCanvasFromDataUrl(saved, () => {
+        this.drawState.undoStack = [saved];
+        this.drawState.redoStack = [];
+        this.updateDrawingUI();
+      });
+    } else {
+      this.drawState.undoStack = [canvas.toDataURL()];
+      this.drawState.redoStack = [];
+      this.updateDrawingUI();
+    }
+
+    // Pointer Event Listeners for Touch, Stylus, and Mouse
+    const onPointerDown = (e) => {
+      e.preventDefault();
+      try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
+      this.drawState.isDrawing = true;
+
+      const pt = this.getCanvasPoint(e, canvas);
+      this.drawState.lastX = pt.x;
+      this.drawState.lastY = pt.y;
+
+      const ctx = this.drawState.ctx;
+      if (!ctx) return;
+
+      ctx.save();
+      this.applyBrushSettings(ctx);
+
+      // Draw single dot on tap/click
+      const dotRadius = this.drawState.tool === 'eraser' 
+        ? Math.max(this.drawState.size * 2, 8) 
+        : (this.drawState.tool === 'highlighter' ? Math.max(this.drawState.size * 1.5, 7) : Math.max(this.drawState.size / 2, 1));
+
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, dotRadius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    };
+
+    const onPointerMove = (e) => {
+      if (!this.drawState.isDrawing) return;
+      e.preventDefault();
+
+      const pt = this.getCanvasPoint(e, canvas);
+      const ctx = this.drawState.ctx;
+      if (!ctx) return;
+
+      ctx.save();
+      this.applyBrushSettings(ctx);
+
+      ctx.beginPath();
+      ctx.moveTo(this.drawState.lastX, this.drawState.lastY);
+      ctx.lineTo(pt.x, pt.y);
+      ctx.stroke();
+      ctx.restore();
+
+      this.drawState.lastX = pt.x;
+      this.drawState.lastY = pt.y;
+    };
+
+    const onPointerUp = (e) => {
+      if (!this.drawState.isDrawing) return;
+      this.drawState.isDrawing = false;
+      try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+
+      this.pushDrawSnapshot();
+      this.saveDrawingDebounced();
+    };
+
+    canvas.addEventListener("pointerdown", onPointerDown);
+    canvas.addEventListener("pointermove", onPointerMove);
+    canvas.addEventListener("pointerup", onPointerUp);
+    canvas.addEventListener("pointercancel", onPointerUp);
+  },
+
+  setupCanvasResolution() {
+    const canvas = document.getElementById("notes-drawing-canvas");
+    const wrap = document.getElementById("drawing-canvas-wrap");
+    if (!canvas || !wrap) return;
+
+    const dpr = window.devicePixelRatio || 1;
+    const width = wrap.clientWidth || 510;
+    const height = wrap.clientHeight || 310;
+
+    const targetWidth = Math.floor(width * dpr);
+    const targetHeight = Math.floor(height * dpr);
+
+    if (canvas.width === targetWidth && canvas.height === targetHeight && this.drawState.ctx) {
+      return;
+    }
+
+    let backupData = null;
+    if (canvas.width > 0 && canvas.height > 0) {
+      try {
+        backupData = canvas.toDataURL();
+      } catch (_) {}
+    }
+
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+
+    const ctx = canvas.getContext("2d");
+    ctx.scale(dpr, dpr);
+    this.drawState.ctx = ctx;
+    this.drawState.canvas = canvas;
+
+    if (backupData) {
+      this.restoreCanvasFromDataUrl(backupData);
+    }
+  },
+
+  getCanvasPoint(e, canvas) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
+  },
+
+  applyBrushSettings(ctx) {
+    const { tool, color, size } = this.drawState;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    if (tool === "eraser") {
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.lineWidth = Math.max(size * 4, 16);
+      ctx.strokeStyle = "rgba(0,0,0,1)";
+      ctx.fillStyle = "rgba(0,0,0,1)";
+    } else if (tool === "highlighter") {
+      ctx.globalCompositeOperation = "source-over";
+      ctx.globalAlpha = 0.35;
+      ctx.lineWidth = Math.max(size * 3.5, 14);
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+    } else {
+      // Pen (Smooth freehand ink)
+      ctx.globalCompositeOperation = "source-over";
+      ctx.globalAlpha = 1.0;
+      ctx.lineWidth = size;
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+    }
+  },
+
+  setDrawTool(tool) {
+    this.drawState.tool = tool;
+    document.querySelectorAll(".draw-tool-group .draw-btn").forEach(btn => btn.classList.remove("active"));
+    const activeBtn = document.getElementById(`draw-tool-${tool}`);
+    if (activeBtn) activeBtn.classList.add("active");
+  },
+
+  setDrawColor(color) {
+    this.drawState.color = color;
+    if (this.drawState.tool === "eraser") {
+      this.setDrawTool("pen");
+    }
+    document.querySelectorAll("#draw-color-palette .draw-swatch").forEach(swatch => {
+      const swatchColor = swatch.getAttribute("onclick") || "";
+      if (swatchColor.includes(color)) {
+        swatch.classList.add("active");
+      } else {
+        swatch.classList.remove("active");
+      }
+    });
+  },
+
+  setDrawSize(size) {
+    this.drawState.size = size;
+    document.querySelectorAll(".draw-size-group .draw-size-btn").forEach(btn => btn.classList.remove("active"));
+    const sizeMap = { 2: "fine", 4: "med", 8: "thick" };
+    const activeBtn = document.getElementById(`draw-size-${sizeMap[size] || 'fine'}`);
+    if (activeBtn) activeBtn.classList.add("active");
+  },
+
+  toggleDrawGrid() {
+    this.drawState.hasGrid = !this.drawState.hasGrid;
+    const wrap = document.getElementById("drawing-canvas-wrap");
+    const gridBtn = document.getElementById("draw-btn-grid");
+    if (wrap) wrap.classList.toggle("with-grid", this.drawState.hasGrid);
+    if (gridBtn) gridBtn.classList.toggle("active", this.drawState.hasGrid);
+  },
+
+  pushDrawSnapshot() {
+    const canvas = document.getElementById("notes-drawing-canvas");
+    if (!canvas) return;
+
+    try {
+      const dataUrl = canvas.toDataURL();
+      this.drawState.undoStack.push(dataUrl);
+      if (this.drawState.undoStack.length > this.drawState.maxHistory) {
+        this.drawState.undoStack.shift();
+      }
+      this.drawState.redoStack = [];
+      this.drawState.hasDrawing = true;
+      this.updateDrawingUI();
+    } catch (e) {
+      console.warn("Could not snapshot canvas", e);
+    }
+  },
+
+  undoDraw() {
+    if (this.drawState.undoStack.length <= 1) return;
+    const current = this.drawState.undoStack.pop();
+    this.drawState.redoStack.push(current);
+
+    const prev = this.drawState.undoStack[this.drawState.undoStack.length - 1];
+    this.restoreCanvasFromDataUrl(prev, () => {
+      this.saveDrawingDebounced();
+      this.updateDrawingUI();
+    });
+  },
+
+  redoDraw() {
+    if (this.drawState.redoStack.length === 0) return;
+    const next = this.drawState.redoStack.pop();
+    this.drawState.undoStack.push(next);
+    this.restoreCanvasFromDataUrl(next, () => {
+      this.saveDrawingDebounced();
+      this.updateDrawingUI();
+    });
+  },
+
+  restoreCanvasFromDataUrl(dataUrl, callback) {
+    const canvas = document.getElementById("notes-drawing-canvas");
+    const wrap = document.getElementById("drawing-canvas-wrap");
+    if (!canvas || !wrap || !this.drawState.ctx) return;
+
+    const ctx = this.drawState.ctx;
+    const width = wrap.clientWidth || 510;
+    const height = wrap.clientHeight || 310;
+
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+
+    if (!dataUrl) {
+      if (callback) callback();
+      return;
+    }
+
+    const img = new Image();
+    img.onload = () => {
+      ctx.save();
+      ctx.drawImage(img, 0, 0, width, height);
+      ctx.restore();
+      if (callback) callback();
+    };
+    img.src = dataUrl;
+  },
+
+  updateDrawingUI() {
+    const undoBtn = document.getElementById("draw-btn-undo");
+    const redoBtn = document.getElementById("draw-btn-redo");
+    const undoInfo = document.getElementById("drawing-undo-info");
+    const dot = document.getElementById("draw-has-content-dot");
+
+    const strokes = Math.max(0, this.drawState.undoStack.length - 1);
+
+    if (undoBtn) {
+      undoBtn.style.opacity = strokes > 0 ? "1" : "0.45";
+      undoBtn.style.pointerEvents = strokes > 0 ? "auto" : "none";
+    }
+    if (redoBtn) {
+      const canRedo = this.drawState.redoStack.length > 0;
+      redoBtn.style.opacity = canRedo ? "1" : "0.45";
+      redoBtn.style.pointerEvents = canRedo ? "auto" : "none";
+    }
+    if (undoInfo) {
+      undoInfo.textContent = `${strokes} ${strokes === 1 ? 'stroke' : 'strokes'}`;
+    }
+    if (dot) {
+      dot.style.display = strokes > 0 ? "inline-block" : "none";
+    }
+  },
+
+  clearDrawing() {
+    const strokes = Math.max(0, this.drawState.undoStack.length - 1);
+    if (strokes === 0 && !this.drawState.hasDrawing) return;
+
+    if (confirm("Clear math scratchpad drawing? This cannot be undone.")) {
+      const canvas = document.getElementById("notes-drawing-canvas");
+      if (!canvas || !this.drawState.ctx) return;
+
+      const ctx = this.drawState.ctx;
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
+
+      this.drawState.undoStack = [canvas.toDataURL()];
+      this.drawState.redoStack = [];
+      this.drawState.hasDrawing = false;
+      localStorage.removeItem("sat_study_drawing");
+      this.updateDrawingUI();
+
+      const statusEl = document.getElementById("notes-save-status");
+      if (statusEl) statusEl.innerHTML = `<span style="color:var(--text-muted);">Scratchpad cleared</span>`;
+    }
+  },
+
+  clearCurrentNotesTab() {
+    if (this.notesState.activeTab === "draw") {
+      this.clearDrawing();
+    } else {
+      this.clearNotes();
+    }
+  },
+
+  saveDrawingDebounced() {
+    const statusEl = document.getElementById("notes-save-status");
+    if (statusEl) statusEl.innerHTML = `<span style="color:#d97706;">⏳ Saving...</span>`;
+
+    if (this.drawState.saveTimeout) clearTimeout(this.drawState.saveTimeout);
+    this.drawState.saveTimeout = setTimeout(() => {
+      try {
+        const canvas = document.getElementById("notes-drawing-canvas");
+        if (canvas) {
+          const dataUrl = canvas.toDataURL("image/png");
+          localStorage.setItem("sat_study_drawing", dataUrl);
+          if (statusEl) statusEl.innerHTML = `<span style="color:var(--primary-dark);">✓ Saved</span>`;
+        }
+      } catch (e) {
+        console.warn("Could not save drawing locally", e);
+        if (statusEl) statusEl.innerHTML = `<span style="color:#dc2626;">✕ Save error</span>`;
+      }
+    }, 450);
+  },
+
+  exportDrawing() {
+    const canvas = document.getElementById("notes-drawing-canvas");
+    if (!canvas) return;
+
+    const exportCanvas = document.createElement("canvas");
+    exportCanvas.width = canvas.width;
+    exportCanvas.height = canvas.height;
+    const expCtx = exportCanvas.getContext("2d");
+
+    // Pure white background
+    expCtx.fillStyle = "#FFFFFF";
+    expCtx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+
+    // Grid lines if graph grid is enabled
+    if (this.drawState.hasGrid) {
+      const dpr = window.devicePixelRatio || 1;
+      const step = 20 * dpr;
+      expCtx.strokeStyle = "rgba(15, 23, 42, 0.07)";
+      expCtx.lineWidth = 1 * dpr;
+      for (let x = 0; x <= exportCanvas.width; x += step) {
+        expCtx.beginPath();
+        expCtx.moveTo(x, 0);
+        expCtx.lineTo(x, exportCanvas.height);
+        expCtx.stroke();
+      }
+      for (let y = 0; y <= exportCanvas.height; y += step) {
+        expCtx.beginPath();
+        expCtx.moveTo(0, y);
+        expCtx.lineTo(exportCanvas.width, y);
+        expCtx.stroke();
+      }
+    }
+
+    // Draw user ink
+    expCtx.drawImage(canvas, 0, 0);
+
+    const a = document.createElement("a");
+    a.download = `SAT_Math_2026_Scratchpad_${new Date().toISOString().slice(0, 10)}.png`;
+    a.href = exportCanvas.toDataURL("image/png");
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  },
+
+  exportNotes() {
+    if (this.notesState.activeTab === "draw") {
+      this.exportDrawing();
+    } else {
+      const text = this.notesState.content || "";
+      if (!text.trim()) {
+        alert("Your study notes are currently empty!");
+        return;
+      }
+      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `SAT_Math_2026_Study_Notes_${new Date().toISOString().slice(0, 10)}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     }
   },
 
@@ -1726,6 +2219,8 @@ const app = {
     this.renderMath();
   }
 };
+
+window.app = app;
 
 // Auto-boot on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
