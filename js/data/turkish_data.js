@@ -1997,3 +1997,1142 @@ window.SAT_TURKISH_QUESTIONS = {
     "tip": "Merkez: $(3, -4)$. Merkezden orijine giden yarıçap doğrusunun eğimi: $m_{r} = \\frac{-4 - 0}{3 - 0} = -\\frac{4}{3}$. Teğet doğru yarıçapa dik olduğundan eğimi ters işaretli çarpmaya göre tersidir: $m_{teget} = \\frac{3}{4}$."
   }
 };
+
+
+window.SAT_TURKISH_SUBTOPICS = {
+  "Linear Equations in One Variable": {
+    "title": "Tek Bilinmeyenli Doğrusal Denklemler",
+    "description": "Doğrusal denklemleri çözme, 0, 1 veya sonsuz çözüm koşullarını belirleme ve cebirsel ifadelerin değerini hesaplama.",
+    "corePrinciple": "Benzer terimleri toplayın, $x$'i yalnız bırakın. $ax + b = cx + d$ biçimindeki bir denklemde: $a \\neq c$ ise tek bir çözüm vardır; $a = c$ ve $b \\neq d$ ise çözüm yoktur; $a = c$ ve $b = d$ ise sonsuz sayıda çözüm vardır.",
+    "vocabulary": [
+      {
+        "en": "linear equation",
+        "tr": "doğrusal (1. dereceden) denklem"
+      },
+      {
+        "en": "combine like terms",
+        "tr": "benzer terimleri toplamak"
+      },
+      {
+        "en": "isolate the variable",
+        "tr": "değişkeni yalnız bırakmak"
+      },
+      {
+        "en": "infinitely many solutions",
+        "tr": "sonsuz sayıda çözüm"
+      },
+      {
+        "en": "no solution",
+        "tr": "çözüm kümesi boş / çözüm yok"
+      }
+    ],
+    "tip": "Soru kökünü daima dikkatle okuyun: SAT genellikle $x$ yerine $2x - 3$ veya $x + 5$ ifadesinin değerini sorar.",
+    "desmosTip": "Denklemin sol tarafını ve sağ tarafını Desmos'a ayrı satırlarda yazın (örn. $y = 5(2x-3)$ ve $y = 3(x+9)$). Kesişim noktasının $x$ koordinatı cevaptır."
+  },
+  "Linear Functions & Modeling": {
+    "title": "Doğrusal Fonksiyonlar & Gerçek Hayat Modellemesi",
+    "description": "Eğimi değişim oranı (rate of change) ve y-eksen kesişimini başlangıç değeri (initial value) olarak yorumlama, iki noktadan veya tablodan denklem kurma.",
+    "corePrinciple": "$f(x) = mx + b$ modelinde: $m$ eğim olup birim artış başına değişimi, $b$ ise başlangıç ($x=0$) değerini temsil eder. Birimlere dikkat edin (örn. yıl başına artış vs. ay sayısı).",
+    "vocabulary": [
+      {
+        "en": "slope / rate of change",
+        "tr": "eğim / değişim oranı"
+      },
+      {
+        "en": "y-intercept / initial value",
+        "tr": "y-ekseni kesişimi / başlangıç değeri"
+      },
+      {
+        "en": "per unit increase",
+        "tr": "birim başına artış"
+      },
+      {
+        "en": "constant rate",
+        "tr": "sabit oran"
+      }
+    ],
+    "tip": "'For each 1 unit increase in x, y increases by m' kalıbı SAT'de eğimin en temel sözlü tanımıdır.",
+    "desmosTip": "Verilen iki noktayı $(x_1, y_1)$ ve $(x_2, y_2)$ Desmos tablosuna girin, altına 'y1 ~ m*x1 + b' yazarak eğim ve başlangıç değerini anında bulun."
+  },
+  "Systems of Two Linear Equations": {
+    "title": "İki Bilinmeyenli Doğrusal Denklem Sistemleri",
+    "description": "Denklem sistemlerini cebirsel (yok etme/yerine koyma) veya grafiksel olarak çözme, parametreli ($k, c, p$) sistemlerde çözüm sayısını inceleme.",
+    "corePrinciple": "$a_1 x + b_1 y = c_1$ ve $a_2 x + b_2 y = c_2$ sisteminde: Çözüm yok ise doğrular paraleldir ($a_1/a_2 = b_1/b_2 \\neq c_1/c_2$). Sonsuz çözüm var ise doğrular çakışıktır ($a_1/a_2 = b_1/b_2 = c_1/c_2$).",
+    "vocabulary": [
+      {
+        "en": "system of equations",
+        "tr": "denklem sistemi"
+      },
+      {
+        "en": "parallel lines",
+        "tr": "paralel doğrular (eğimleri eşit)"
+      },
+      {
+        "en": "intersection point",
+        "tr": "kesişim noktası (ortak çözüm)"
+      },
+      {
+        "en": "coincident / identical lines",
+        "tr": "çakışık / aynı doğrular"
+      }
+    ],
+    "tip": "Sonsuz çözüm veya sıfır çözüm sorularında katsayı oranlarını eşitlemek (oran-orantı) soruyu 10 saniyede çözer.",
+    "desmosTip": "İki denklemi hiç düzenlemeden doğrudan Desmos'a yazın. Tek çözüm varsa gri kesişim noktasına tıklayın; paralelse kesişim oluşmaz."
+  },
+  "Linear Inequalities in 1 or 2 Variables": {
+    "title": "Bir veya İki Değişkenli Doğrusal Eşitsizlikler",
+    "description": "Eşitsizlik çözme, negatif sayı ile çarpma/bölmede işaret yön değiştirme, 2 boyutlu koordinat düzleminde çözüm bölgesini tarama.",
+    "corePrinciple": "Eşitsizliğin her iki tarafı negatif bir sayı ile çarpılır veya bölünürse eşitsizlik işareti yön değiştirir ($<$ iken $>$ olur). İki değişkenli eşitsizliklerde doğru sınırını çizip $(0,0)$ kontrol noktası ile taranacak bölgeyi belirleyin.",
+    "vocabulary": [
+      {
+        "en": "inequality",
+        "tr": "eşitsizlik"
+      },
+      {
+        "en": "at least (>=)",
+        "tr": "en az (büyük veya eşit: $\\ge$)"
+      },
+      {
+        "en": "at most (<=)",
+        "tr": "en çok (küçük veya eşit: $\\le$)"
+      },
+      {
+        "en": "shaded region",
+        "tr": "taranmış / gölgeli bölge"
+      },
+      {
+        "en": "boundary line",
+        "tr": "sınır doğrusu (kesikli veya düz)"
+      }
+    ],
+    "tip": "Düz çizgi '$\\le$ veya $\\ge$' için kullanılır; kesikli çizgi ise '$<$ veya $>$' için kullanılır.",
+    "desmosTip": "Eşitsizlikleri doğrudan $y \\ge 2x - 3$ şeklinde yazın; Desmos ortak çözüm bölgesini renk tonlarıyla açıkça tarar."
+  },
+  "Linear Equations in Two Variables": {
+    "title": "İki Değişkenli Doğrusal Denklemler (Standart Form)",
+    "description": "$Ax + By = C$ standart formunu anlama, eksen kesişimlerini bulma ve bütçe/kısıt modellerini kurma.",
+    "corePrinciple": "$Ax + By = C$ denkleminde: Eğim $m = -A/B$, y-kesişimi $(0, C/B)$, x-kesişimi $(C/A, 0)$'dır.",
+    "vocabulary": [
+      {
+        "en": "standard form",
+        "tr": "standart doğrusal form ($Ax + By = C$)"
+      },
+      {
+        "en": "x-intercept",
+        "tr": "x-eksenini kesen nokta ($y=0$)"
+      },
+      {
+        "en": "y-intercept",
+        "tr": "y-eksenini kesen nokta ($x=0$)"
+      },
+      {
+        "en": "constraint equation",
+        "tr": "kısıtlama / bütçe denklemi"
+      }
+    ],
+    "tip": "Eksen kesişimlerini bulmak için diğer değişkene 0 verin: $x=0 \\implies By=C$, $y=0 \\implies Ax=C$.",
+    "desmosTip": "Standart formdaki denklemleri $y$'yi yalnız bırakmadan doğrudan yazabilirsiniz. Eksenleri kestiği noktalara tıklayarak koordinatları hemen okuyun."
+  },
+  "Equivalent Expressions & Factoring": {
+    "title": "Eşdeğer İfadeler & Çarpanlara Ayırma",
+    "description": "İki kare farkı, tam kare açılımları, gruplandırarak çarpanlara ayırma, polinom bölmesi ve rasyonel ifadeleri sadeleştirme.",
+    "corePrinciple": "$x^2 - y^2 = (x - y)(x + y)$, $(x \\pm y)^2 = x^2 \\pm 2xy + y^2$. Kesirli üslerde $x^{a/b} = \\sqrt[b]{x^a}$ kuralı uygulanır.",
+    "vocabulary": [
+      {
+        "en": "equivalent expression",
+        "tr": "eşdeğer / denk ifade"
+      },
+      {
+        "en": "difference of squares",
+        "tr": "iki kare farkı"
+      },
+      {
+        "en": "perfect square trinomial",
+        "tr": "tam kare üç terimli"
+      },
+      {
+        "en": "factoring",
+        "tr": "çarpanlara ayırma"
+      },
+      {
+        "en": "common factor",
+        "tr": "ortak çarpan"
+      }
+    ],
+    "tip": "Hangi şıkkın orijinal ifadeye eşit olduğunu bulmakta zorlanırsanız, değişkene basit bir sayı (örn. $x=2$) verip şıkları test edin.",
+    "desmosTip": "Orijinal ifadeyi $y_1$ olarak, şıkları $y_2$ olarak yazın. Grafikler birebir üst üste biniyorsa o şık doğrudur."
+  },
+  "Nonlinear Equations (Quadratics, Radicals, Rationals)": {
+    "title": "Doğrusal Olmayan Denklemler (Kareköklü, Rasyonel, İkinci Derece)",
+    "description": "İkinci dereceden denklem çözümleri, diskriminant analizi, kökler toplamı/çarpımı ve yabancı kök (extraneous solution) tespiti.",
+    "corePrinciple": "Kökler toplamı $-b/a$, kökler çarpımı $c/a$'dır. Karekök veya rasyonel denklemlerde her iki tarafın karesi alındığında mutlaka yabancı kök kontrolü yapılmalıdır!",
+    "vocabulary": [
+      {
+        "en": "extraneous solution",
+        "tr": "yabancı / sahte kök (denklemi sağlamayan)"
+      },
+      {
+        "en": "quadratic equation",
+        "tr": "ikinci dereceden denklem"
+      },
+      {
+        "en": "discriminant",
+        "tr": "diskriminant ($b^2 - 4ac$)"
+      },
+      {
+        "en": "radical equation",
+        "tr": "köklü denklem"
+      }
+    ],
+    "tip": "TUZAK: Karekökün sonucu asla negatif olamaz! $\\sqrt{x+2} = -3$ gibi bir ifadenin reel çözümü yoktur.",
+    "desmosTip": "Denklemi tek bir fonksiyon olarak yazıp $x$-eksenini kestiği noktalara bakın. Yabancı kökler grafikte görünmez, doğrudan gerçek kökleri görürsünüz."
+  },
+  "Nonlinear Functions & Vertex Form": {
+    "title": "Paraboller & Tepe Noktası (Vertex Form)",
+    "description": "Tepe noktası formu $y = a(x - h)^2 + k$, maksimum/minimum değerleri belirleme, simetri ekseni ve parabol modellemeleri.",
+    "corePrinciple": "Tepe noktası $(h, k)$ olup, parabolün simetri ekseni $x = h = -b/(2a)$'dır. $a > 0$ ise tepe noktası minimum, $a < 0$ ise maksimum değerdir.",
+    "vocabulary": [
+      {
+        "en": "vertex",
+        "tr": "tepe noktası $(h, k)$"
+      },
+      {
+        "en": "maximum / minimum value",
+        "tr": "maksimum / minimum değer ($k$ değeri)"
+      },
+      {
+        "en": "axis of symmetry",
+        "tr": "simetri ekseni ($x = h$)"
+      },
+      {
+        "en": "parabola opens upward/downward",
+        "tr": "parabolün kolları yukarı/aşağı doğru"
+      }
+    ],
+    "tip": "Soru 'minimum veya maksimum değer kaçtır' derse tepe noktasının $y$'sini ($k$), 'bu değere nerede ulaşır' derse $x$'ini ($h$) sormaktadır.",
+    "desmosTip": "Parabolü Desmos'a yazın ve tepe noktasına bir kez tıklayın; koordinatlar doğrudan $(h, k)$ olarak ekranda belirir."
+  },
+  "Exponential Functions & Percentage Growth": {
+    "title": "Üstel Fonksiyonlar & Yüzdesel Büyüme/Azalma",
+    "description": "$f(t) = a \\cdot b^t$ modeli, yarı ömür (half-life), ikiye katlanma ve zaman periyoduna göre üs ölçekleme $a \\cdot b^{t/k}$.",
+    "corePrinciple": "Büyüme çarpanı $b = 1 + r$, azalma çarpanı $b = 1 - r$'dir. Eğer miktar her 4 saatte bir 3 katına çıkıyorsa üs $t/4$ olmalıdır: $f(t) = a \\cdot 3^{t/4}$.",
+    "vocabulary": [
+      {
+        "en": "exponential growth",
+        "tr": "üstel büyüme ($b > 1$)"
+      },
+      {
+        "en": "exponential decay",
+        "tr": "üstel azalma ($0 < b < 1$)"
+      },
+      {
+        "en": "initial amount",
+        "tr": "başlangıç miktarı ($a$)"
+      },
+      {
+        "en": "growth factor",
+        "tr": "büyüme çarpanı ($1 + r$)"
+      },
+      {
+        "en": "half-life",
+        "tr": "yarılanma ömrü"
+      }
+    ],
+    "tip": "Her yıl %15 artış demek $b = 1.15$ demektir; her yıl %15 azalış demek $b = 0.85$ demektir.",
+    "desmosTip": "Modeli yazıp $t$ yerine sorulan zamanı koyarak hesaplayın veya tablo ekleyerek değerleri kontrol edin."
+  },
+  "Function Notation & Transformations": {
+    "title": "Fonksiyon Gösterimi & Grafik Dönüşümleri",
+    "description": "Bileşke fonksiyonlar $f(g(x))$, yatay öteleme $f(x - c)$, dikey öteleme $f(x) + c$ ve eksenlere göre yansımalar.",
+    "corePrinciple": "$f(x - h)$ grafiği $h$ birim SAĞA kaydırır; $f(x + h)$ grafiği $h$ birim SOLA kaydırır; $f(x) + k$ grafiği $k$ birim YUKARI kaydırır; $-f(x)$ x-eksenine göre yansıtır.",
+    "vocabulary": [
+      {
+        "en": "function transformation",
+        "tr": "fonksiyon dönüşümü"
+      },
+      {
+        "en": "horizontal shift",
+        "tr": "yatay kaydırma / öteleme"
+      },
+      {
+        "en": "vertical shift",
+        "tr": "dikey kaydırma / öteleme"
+      },
+      {
+        "en": "reflection across x-axis",
+        "tr": "x-eksenine göre yansıma"
+      },
+      {
+        "en": "composite function",
+        "tr": "bileşke fonksiyon"
+      }
+    ],
+    "tip": "Yatay ötelemelerde işaret ters çalışır: Parantez içinde $(x - 4)$ varsa grafik +4 yönüne (sağa) kayar!",
+    "desmosTip": "Desmos'ta $f(x)$'i tanımlayın, sonraki satıra $g(x) = f(x - 3) + 2$ yazarak ötelenmiş grafiği anında gözlemleyin."
+  },
+  "Ratios, Rates, Proportions & Unit Conversions": {
+    "title": "Oran, Orantı, Birim Dönüşümleri & Yoğunluk",
+    "description": "Çok adımlı birim çevirme zincirleri (mil/saat ➔ metre/saniye), ölçek faktörleri ve yoğunluk formülü (Yoğunluk = Kütle / Hacim).",
+    "corePrinciple": "Birim çevirmede sadeleşecek birimler çapraz gelecek şekilde oranlar çarpılır. Alan çevirirken oranın karesi ($k^2$), hacim çevirirken küpü ($k^3$) alınır!",
+    "vocabulary": [
+      {
+        "en": "unit conversion",
+        "tr": "birim dönüştürme"
+      },
+      {
+        "en": "proportion",
+        "tr": "orantı"
+      },
+      {
+        "en": "density",
+        "tr": "yoğunluk (Kütle / Hacim)"
+      },
+      {
+        "en": "scale factor",
+        "tr": "ölçek faktörü"
+      }
+    ],
+    "tip": "1 metre = 100 cm ise, $1\\text{ m}^2 = 100^2 = 10,000\\text{ cm}^2$'dir! Alan ve hacimde birim çarpanının üssünü almayı unutmayın.",
+    "desmosTip": "Birim dönüştürme kesirlerini Desmos'ta tek bir satırda çarparak işlem hatası yapmadan sonucu bulun."
+  },
+  "Percentages & Percent Change": {
+    "title": "Yüzdeler & Ardışık Yüzde Değişimleri",
+    "description": "Ardışık yüzde değişimleri, indirim/vergi öncesi orijinal fiyatı bulma (ters yüzde hesabı) ve yüzde artış/azalış formülü.",
+    "corePrinciple": "Yüzde Değişim $= (\\text{Yeni} - \\text{Eski}) / \\text{Eski} \\times 100$. Bir fiyata %20 zam yapılıp ardından %20 indirim yapılırsa sonuç $1.20 \\times 0.80 = 0.96$ olur (%4 net kayıp, sıfır değil!).",
+    "vocabulary": [
+      {
+        "en": "percent increase / decrease",
+        "tr": "yüzde artış / azalış"
+      },
+      {
+        "en": "original price",
+        "tr": "orijinal / başlangıç fiyatı"
+      },
+      {
+        "en": "discount",
+        "tr": "indirim"
+      },
+      {
+        "en": "sales tax",
+        "tr": "satış vergisi (KDV)"
+      }
+    ],
+    "tip": "Vergili fiyattan vergisiz fiyata dönerken: $P_{\\text{vergili}} = P \\times (1 + r)$ formülünü kurup bölme yapın, doğrudan %r çıkarmayın!",
+    "desmosTip": "Ters yüzde sorularında 'x * 1.08 = 54' yazın; Desmos $x$'i doğrudan çözer."
+  },
+  "Two-Way Frequency Tables & Probability": {
+    "title": "İki Yönlü Tablolar & Koşullu Olasılık",
+    "description": "Kontenjans tablolarından marjinal, birleşik ve koşullu olasılık hesaplama.",
+    "corePrinciple": "Koşullu olasılıkta ('Given that the student is a senior...'): Payda genel toplam değil, SADECE şart koşulan grubun (örneğin son sınıf öğrencilerinin) toplamıdır!",
+    "vocabulary": [
+      {
+        "en": "two-way frequency table",
+        "tr": "iki yönlü frekans tablosu"
+      },
+      {
+        "en": "conditional probability",
+        "tr": "koşullu olasılık ('Given that...')"
+      },
+      {
+        "en": "marginal total",
+        "tr": "satır / sütun toplamı"
+      },
+      {
+        "en": "joint probability",
+        "tr": "ortak / kesişim olasılığı"
+      }
+    ],
+    "tip": "'Given that' ifadesini gördüğünüzde tablonun diğer tüm satır ve sütunlarını görmezden gelin; payda sadece o satırın/sütunun toplamıdır.",
+    "desmosTip": "Pay ve paydayı doğrudan '24 / 85' olarak yazın, Desmos hem kesir hem ondalık değerini versin."
+  },
+  "Distributions: Center, Spread & Outliers": {
+    "title": "Veri Dağılımları: Ortalama, Medyan & Aykırı Değerler",
+    "description": "Aritmetik ortalama, medyan (ortanca), tepe değer (mod), standart sapma, açıklık (range) ve çarpıklık (skewness).",
+    "corePrinciple": "Aykırı uç değerler (outliers) ORTALAMAYI kendi yönüne doğru çeker. MEDYAN ise aykırı değerlere karşı dirençlidir ve konumunu korur.",
+    "vocabulary": [
+      {
+        "en": "mean (average)",
+        "tr": "aritmetik ortalama"
+      },
+      {
+        "en": "median",
+        "tr": "ortanca değer (sıralandığında ortadaki)"
+      },
+      {
+        "en": "mode",
+        "tr": "tepe değer (en sık tekrar eden)"
+      },
+      {
+        "en": "standard deviation",
+        "tr": "standart sapma (yayılım ölçüsü)"
+      },
+      {
+        "en": "outlier",
+        "tr": "aykırı uç değer"
+      }
+    ],
+    "tip": "Sağa çarpık (right-skewed / tail to the right) dağılımlarda: $\\text{Mean} > \\text{Median}$'dır. Sola çarpık dağılımlarda: $\\text{Mean} < \\text{Median}$'dır.",
+    "desmosTip": "Veri setini 'L = [12, 15, 18, ...]' olarak girin; ardından 'mean(L)', 'median(L)', 'stdev(L)' fonksiyonlarıyla tüm istatistikleri anında alın."
+  },
+  "Scatterplots, Line of Best Fit & Margin of Error": {
+    "title": "Dağılım Grafikleri, Regresyon Doğrusu & Hata Payı",
+    "description": "En uygun doğru (line of best fit) eğim ve kesişimini yorumlama, artık değer (residual = gerçek - tahmin) ve örneklem büyüklüğü ilişkisi.",
+    "corePrinciple": "Hata payı (margin of error) örneklem büyüklüğünün kareköküyle ters orantılıdır ($\\text{MOE} \\propto 1/\\sqrt{n}$). Rastgele örneklem sonuçların genellenmesini sağlar; rastgele atama ise neden-sonuç kanıtlar.",
+    "vocabulary": [
+      {
+        "en": "scatterplot",
+        "tr": "dağılım / saçılım grafiği"
+      },
+      {
+        "en": "line of best fit",
+        "tr": "en uygun doğru / regresyon doğrusu"
+      },
+      {
+        "en": "residual",
+        "tr": "artık değer ($y_{\\text{gerçek}} - y_{\\text{tahmin}}$)"
+      },
+      {
+        "en": "margin of error",
+        "tr": "hata payı"
+      },
+      {
+        "en": "sample size",
+        "tr": "örneklem büyüklüğü ($n$)"
+      }
+    ],
+    "tip": "Örneklem büyüklüğü ($n$) arttıkça hata payı KÜÇÜLÜR. Güven aralığı daralır.",
+    "desmosTip": "Tabloya noktaları girip 'y1 ~ m*x1 + b' yazarak en uygun doğrunun kesin denklemini 5 saniyede çıkarın."
+  },
+  "Area & Volume Problems": {
+    "title": "Geometri: Alan, Hacim & Ölçekleme Problemleri",
+    "description": "Bileşik 2D şekiller, 3D prizma, silindir, koni, küre hacimleri ve benzerlik katsayısının çevre, alan ve hacme etkisi.",
+    "corePrinciple": "Benzer şekillerde uzunluk oranı $k$ ise; Çevreler oranı $k$, Alanlar oranı $k^2$, Hacimler oranı $k^3$'tür!",
+    "vocabulary": [
+      {
+        "en": "composite shape",
+        "tr": "bileşik şekil"
+      },
+      {
+        "en": "surface area",
+        "tr": "yüzey alanı"
+      },
+      {
+        "en": "volume",
+        "tr": "hacim"
+      },
+      {
+        "en": "scale factor",
+        "tr": "benzerlik / ölçek oranı ($k$)"
+      }
+    ],
+    "tip": "Bir küpün tüm kenarları 2 katına çıkarılırsa yüzey alanı $2^2 = 4$ katına, hacmi ise $2^3 = 8$ katına çıkar!",
+    "desmosTip": "Ekranın üstündeki Reference Sheet butonuna basarak silindir, koni ve küre hacim formüllerini teyit edebilirsiniz."
+  },
+  "Lines, Angles & Triangle Theorems": {
+    "title": "Doğruda Açılar, Üçgen Teoremleri & Benzerlik",
+    "description": "Paralel doğruları kesen doğrunun oluşturduğu açılar (iç ters, yöndeş), üçgenin iç/dış açıları ve benzer üçgen oranları.",
+    "corePrinciple": "Bir üçgende bir dış açı, kendisine komşu olmayan iki iç açının toplamına eşittir. Benzer üçgenlerin karşılıklı açıları eşit, kenar uzunlukları ise orantılıdır.",
+    "vocabulary": [
+      {
+        "en": "alternate interior angles",
+        "tr": "iç ters açılar (birbirine eşit)"
+      },
+      {
+        "en": "corresponding angles",
+        "tr": "yöndeş açılar (birbirine eşit)"
+      },
+      {
+        "en": "exterior angle theorem",
+        "tr": "dış açı teoremi"
+      },
+      {
+        "en": "similar triangles",
+        "tr": "benzer üçgenler"
+      }
+    ],
+    "tip": "İki üçgenin ikişer açısı eşitse (A-A benzerliği), üçüncü açıları da eşittir ve bu üçgenler mutlaka benzerdir.",
+    "desmosTip": "Kenar oranlarını Desmos'ta $a / b = c / x$ şeklinde kurarak bilinmeyen kenarı anında hesaplayın."
+  },
+  "Right Triangles & SOH CAH TOA": {
+    "title": "Dik Üçgenler, Özel Üçgenler & Trigonometri",
+    "description": "Pisagor bağıntısı ($a^2 + b^2 = c^2$), $30^{\\circ}-60^{\\circ}-90^{\\circ}$ ve $45^{\\circ}-45^{\\circ}-90^{\\circ}$ üçgenleri, $\\sin, \\cos, \\tan$ ve tümler açı kimliği.",
+    "corePrinciple": "Tümler açı kimliği: $\\sin(x^{\\circ}) = \\cos(90^{\\circ} - x^{\\circ})$. Eğer $\\sin(A) = \\cos(B)$ ise $A + B = 90^{\\circ}$'dir!",
+    "vocabulary": [
+      {
+        "en": "hypotenuse",
+        "tr": "hipotenüs (en uzun kenar, $90^\\circ$'nin karşısı)"
+      },
+      {
+        "en": "opposite / adjacent leg",
+        "tr": "karşı dik kenar / komşu dik kenar"
+      },
+      {
+        "en": "complementary angles",
+        "tr": "tümler açılar (toplamı $90^\\circ$ olan açılar)"
+      },
+      {
+        "en": "special right triangle",
+        "tr": "özel dik üçgen"
+      }
+    ],
+    "tip": "SAT'de $\\sin(4x - 10) = \\cos(3x + 2)$ gibi denklemler çok sık sorulur. Parantez içlerinin toplamını doğrudan $90$'a eşitleyin!",
+    "desmosTip": "Desmos'ta trigonometri kullanırken sağ üstteki İngiliz anahtarı (wrench) ikonundan açının 'Degrees' modunda olduğundan emin olun!"
+  },
+  "Circle Equations in Coordinate Plane": {
+    "title": "Analitik Düzlemde Çember Denklemi",
+    "description": "$(x - h)^2 + (y - k)^2 = r^2$ standart çember denklemi, tam kareye tamamlama ve teğet doğruları.",
+    "corePrinciple": "Merkezi $(h, k)$ ve yarıçapı $r$ olan çember. Genel form verildiğinde ($x^2 + y^2 + Ax + By = C$), $x$ ve $y$ için ayrı ayrı tam kareye tamamlanır. Teğet doğru yarıçapa diktir ($m_{\\text{teğet}} \\cdot m_{\\text{yarıçap}} = -1$).",
+    "vocabulary": [
+      {
+        "en": "center of circle",
+        "tr": "çemberin merkezi $(h, k)$"
+      },
+      {
+        "en": "radius",
+        "tr": "yarıçap ($r$)"
+      },
+      {
+        "en": "completing the square",
+        "tr": "tam kareye tamamlama"
+      },
+      {
+        "en": "tangent line",
+        "tr": "teğet doğru ($90^\\circ$ dik kesen)"
+      }
+    ],
+    "tip": "Denklem $(x - 3)^2 + (y + 5)^2 = 49$ ise yarıçap 49 değil, $\\sqrt{49} = 7$'dir! Merkez ise $(3, -5)$'tir.",
+    "desmosTip": "Çember denklemini genel formuyla ($x^2 + 6x + y^2 - 8y = 11$) hiç tam kareye tamamlamadan doğrudan Desmos'a yazın; çember çizilir ve merkez ile yarıçapı hemen okursunuz."
+  },
+  "Circle Theorems: Arcs, Sectors & Radians": {
+    "title": "Çember Teoremleri: Yay Uzunluğu, Daire Dilimi & Radyan",
+    "description": "Yay uzunluğu $s = r\\theta$, daire dilimi alanı $A = \\frac{1}{2}r^2\\theta$, çevre açı ve merkez açı ilişkisi.",
+    "corePrinciple": "Çevre açı gördüğü yayın yarısına eşittir; merkez açı ise gördüğü yaya eşittir. Dereceden radyana geçişte açı $\\frac{\\pi}{180}$ ile çarpılır ($180^{\\circ} = \\pi\\text{ rad}$).",
+    "vocabulary": [
+      {
+        "en": "arc length",
+        "tr": "yay uzunluğu ($s$)"
+      },
+      {
+        "en": "sector area",
+        "tr": "daire diliminin alanı"
+      },
+      {
+        "en": "central angle",
+        "tr": "merkez açı"
+      },
+      {
+        "en": "inscribed angle",
+        "tr": "çevre açı (köşesi çember üzerinde olan)"
+      },
+      {
+        "en": "radian",
+        "tr": "radyan"
+      }
+    ],
+    "tip": "Çapı gören çevre açı daima $90^{\\circ}$'dir! Dilim alanı formülünde açının derece mi radyan mı olduğuna dikkat edin.",
+    "desmosTip": "Derece ise: $(A/360) * \\pi * r^2$. Radyan ise: $0.5 * r^2 * \\theta$. Desmos'ta formülü doğrudan hesaplayın."
+  }
+};
+
+window.SAT_TURKISH_FORMULAS = {
+  "cb-circle-area": {
+    "title": "Dairenin Alanı",
+    "explanation": "Yarıçapı $r$ olan bir dairenin kapladığı 2 boyutlu yüzey alanını hesaplar.",
+    "traps": "College Board sorularda genellikle yarıçap yerine ÇAPI (diameter) verir. Çap 12 ise yarıçap $r = 6$'dır; 12 ile işlem yapmayın!",
+    "vocabulary": [
+      {
+        "en": "area",
+        "tr": "alan"
+      },
+      {
+        "en": "radius",
+        "tr": "yarıçap ($r$)"
+      },
+      {
+        "en": "diameter",
+        "tr": "çap ($d = 2r$)"
+      }
+    ],
+    "desmosTip": "Doğrudan 'pi * r^2' yazın. 'r=6' yazarak Desmos'un sonucu anında vermesini sağlayın."
+  },
+  "cb-circle-circ": {
+    "title": "Çemberin Çevresi",
+    "explanation": "Çemberin etrafındaki toplam çevresel uzunluğu hesaplar.",
+    "traps": "Çevre formülü ($2\\pi r$) ile Alan formülünü ($\\pi r^2$) karıştırmayın. Yarım daire çevresinde çap düz kenarını ($+ 2r$) eklemeyi unutmayın!",
+    "vocabulary": [
+      {
+        "en": "circumference",
+        "tr": "çemberin çevresi"
+      },
+      {
+        "en": "perimeter",
+        "tr": "çevre uzunluğu"
+      }
+    ],
+    "desmosTip": "Desmos 'pi' sembolünü otomatik tanır. Yay uzunluğu için (derece/360)*2*pi*r yazabilirsiniz."
+  },
+  "cb-rect-area": {
+    "title": "Dikdörtgenin Alanı",
+    "explanation": "Birbirine dik olan boy ($\\ell$) ve en ($w$) boyutlarının çarpımıdır.",
+    "traps": "Boyut ölçekleme tuzakları: Boy %20 artar, en %10 azalırsa alan $1.20 \\times 0.90 = 1.08$ katına çıkar (+%8), $20 - 10 = +%10$ DEĞİLDİR!",
+    "vocabulary": [
+      {
+        "en": "rectangle",
+        "tr": "dikdörtgen"
+      },
+      {
+        "en": "length / width",
+        "tr": "boy / en"
+      },
+      {
+        "en": "dimensions",
+        "tr": "boyutlar"
+      }
+    ],
+    "desmosTip": "Sabit çevre ile maksimum alanı bulmak için y = x(P/2 - x) parabolünün tepe noktasını inceleyin."
+  },
+  "cb-tri-area": {
+    "title": "Üçgenin Alanı",
+    "explanation": "Herhangi bir taban ile o tabana ait dik yüksekliğin çarpımının yarısıdır.",
+    "traps": "Geniş açılı üçgenlerde yükseklik üçgenin dışına düşebilir. Eğik kenarı yükseklik olarak almayın, daima dik ($90^\\circ$) yüksekliği bulun!",
+    "vocabulary": [
+      {
+        "en": "base",
+        "tr": "taban"
+      },
+      {
+        "en": "perpendicular height",
+        "tr": "dik yükseklik"
+      },
+      {
+        "en": "altitude",
+        "tr": "yükseklik"
+      }
+    ],
+    "desmosTip": "Dik üçgenlerde alan iki dik kenarın çarpımının yarısıdır: 0.5 * a * b."
+  },
+  "cb-pythagorean": {
+    "title": "Pisagor Bağıntısı",
+    "explanation": "Bir dik üçgende dik kenarların kareleri toplamı hipotenüsün karesine eşittir.",
+    "traps": "TUZAK: Hipotenüs daima $90^{\\circ}$ açının tam karşısındaki en uzun kenardır. $c^2$'yi bulduktan sonra karekök almayı unutmayın!",
+    "vocabulary": [
+      {
+        "en": "hypotenuse",
+        "tr": "hipotenüs"
+      },
+      {
+        "en": "legs",
+        "tr": "dik kenarlar"
+      },
+      {
+        "en": "right triangle",
+        "tr": "dik üçgen"
+      }
+    ],
+    "desmosTip": "Hipotenüs için doğrudan 'sqrt(a^2 + b^2)' yazabilirsiniz. Pisagor üçlülerini (3-4-5, 5-12-13, 7-24-25, 8-15-17) ezberleyin."
+  },
+  "cb-special-45": {
+    "title": "Özel Dik Üçgen: 45°-45°-90° (İkizkenar Dik Üçgen)",
+    "explanation": "İki dik kenarı eşit olan üçgende hipotenüs dik kenarın $\\sqrt{2}$ katıdır.",
+    "traps": "Hipotenüs verildiğinde dik kenarı bulmak için $\\sqrt{2}$ ile çarpmayın, $\\sqrt{2}$'ye BÖLÜN!",
+    "vocabulary": [
+      {
+        "en": "isosceles right triangle",
+        "tr": "ikizkenar dik üçgen"
+      },
+      {
+        "en": "congruent legs",
+        "tr": "eş dik kenarlar"
+      }
+    ],
+    "desmosTip": "Kenar s ise hipotenüs s*sqrt(2). Hipotenüs h ise dik kenar h/sqrt(2)."
+  },
+  "cb-special-30-60": {
+    "title": "Özel Dik Üçgen: 30°-60°-90°",
+    "explanation": "$30^\\circ$'nin karşısı $x$, $60^\\circ$'nin karşısı $x\\sqrt{3}$, $90^\\circ$'nin karşısı $2x$'tir.",
+    "traps": "Kenarları yanlış açılarla eşleştirmeyin: En kısa kenar ($x$) daima en küçük açı olan $30^{\\circ}$'nin karşısındadır!",
+    "vocabulary": [
+      {
+        "en": "shorter leg",
+        "tr": "kısa dik kenar ($30^\\circ$ karşısı)"
+      },
+      {
+        "en": "longer leg",
+        "tr": "uzun dik kenar ($60^\\circ$ karşısı)"
+      }
+    ],
+    "desmosTip": "Hipotenüs verildiğinde hemen 2'ye bölerek 30'un karşısını bulun, sonra sqrt(3) ile çarpın."
+  },
+  "cb-vol-box": {
+    "title": "Dikdörtgenler Prizmasının Hacmi",
+    "explanation": "Taban alanı ile yüksekliğin çarpımıdır: $V = \\ell \\cdot w \\cdot h$.",
+    "traps": "Küp sorularında kenar $s$ ise $V = s^3$. Bir kenar 3 katına çıkarsa hacim $3^3 = 27$ katına çıkar!",
+    "vocabulary": [
+      {
+        "en": "rectangular prism",
+        "tr": "dikdörtgenler prizması"
+      },
+      {
+        "en": "cube",
+        "tr": "küp"
+      }
+    ],
+    "desmosTip": "Tüm kenar ölçülerini aynı birime çevirdikten sonra çarpın."
+  },
+  "cb-vol-cylinder": {
+    "title": "Dik Dairesel Silindirin Hacmi",
+    "explanation": "Dairesel taban alanı ile yüksekliğin çarpımıdır: $V = \\pi r^2 h$.",
+    "traps": "College Board genellikle taban ÇAPINI verir. $r = d/2$ yapmadan doğrudan çapın karesini almayın!",
+    "vocabulary": [
+      {
+        "en": "cylinder",
+        "tr": "silindir"
+      },
+      {
+        "en": "base radius",
+        "tr": "taban yarıçapı"
+      },
+      {
+        "en": "height",
+        "tr": "yükseklik"
+      }
+    ],
+    "desmosTip": "Desmos'a 'V = pi * r^2 * h' yazarak bilinmeyen değişkeni diğerlerinin yerine koyarak çözebilirsiniz."
+  },
+  "cb-vol-sphere": {
+    "title": "Kürenin Hacmi",
+    "explanation": "Yarıçapı $r$ olan kürenin hacmi $V = \\frac{4}{3}\\pi r^3$ formülü ile bulunur.",
+    "traps": "Yarıçapın karesini ($r^2$) değil, KÜBÜNÜ ($r^3$) almayı unutmayın. Yarım küre (hemisphere) sorulursa 2'ye bölmeyi unutmayın!",
+    "vocabulary": [
+      {
+        "en": "sphere",
+        "tr": "küre"
+      },
+      {
+        "en": "hemisphere",
+        "tr": "yarım küre (hacmin yarısı)"
+      }
+    ],
+    "desmosTip": "Desmos'ta '(4/3) * pi * r^3' yazın."
+  },
+  "cb-vol-cone": {
+    "title": "Dik Dairesel Koninin Hacmi",
+    "explanation": "Aynı taban ve yüksekliğe sahip silindirin hacminin üçte biridir: $V = \\frac{1}{3}\\pi r^2 h$.",
+    "traps": "Yanal ayrıt (slant height) ile dik yükseklik ($h$) karıştırılmamalıdır. Pisagor ile dik yüksekliği bulun: $h = \\sqrt{L^2 - r^2}$.",
+    "vocabulary": [
+      {
+        "en": "cone",
+        "tr": "koni"
+      },
+      {
+        "en": "slant height",
+        "tr": "yanal ayrıt / ana doğru"
+      }
+    ],
+    "desmosTip": "1/3 katsayısını unutmayın; silindirin hacminin tam üçte biridir."
+  },
+  "cb-vol-pyramid": {
+    "title": "Piramidin Hacmi",
+    "explanation": "Taban alanı ($B$) ile dik yüksekliğin ($h$) çarpımının üçte biridir: $V = \\frac{1}{3} B h$.",
+    "traps": "Taban kare ise $B = s^2$, dikdörtgen ise $B = \\ell w$. 1/3 çarpanını unutmayın!",
+    "vocabulary": [
+      {
+        "en": "pyramid",
+        "tr": "piramit"
+      },
+      {
+        "en": "base area",
+        "tr": "taban alanı ($B$)"
+      }
+    ],
+    "desmosTip": "Taban alanını hesaplayıp 'V = (1/3) * B * h' olarak girin."
+  },
+  "cb-angle-rules": {
+    "title": "Açı Bağıntıları: Üçgen & Çember",
+    "explanation": "Üçgenin iç açıları toplamı $180^{\\circ}$, tam çember yay açısı $360^{\\circ} = 2\\pi\\text{ rad}$'dır.",
+    "traps": "Derece ile radyanı birbirine eklemeyin; işlem yapmadan önce aynı birime dönüştürün.",
+    "vocabulary": [
+      {
+        "en": "interior angles",
+        "tr": "iç açılar"
+      },
+      {
+        "en": "radians",
+        "tr": "radyan"
+      }
+    ],
+    "desmosTip": "Desmos derece/radyan dönüşümünü otomatik yapmaz, modunuzu kontrol edin."
+  },
+  "alg-slope": {
+    "title": "Eğim Formülü (Slope)",
+    "explanation": "İki noktadan geçen doğrunun dikliğini belirler: $m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{\\Delta y}{\\Delta x}$.",
+    "traps": "İşaret hataları: $y_2 - y_1$ yaparken paydada sırayı bozup $x_1 - x_2$ yazmayın. Payda sıfır olursa eğim tanımsızdır (düşey doğru: $x = c$).",
+    "vocabulary": [
+      {
+        "en": "slope",
+        "tr": "eğim ($m$)"
+      },
+      {
+        "en": "rise over run",
+        "tr": "dikey değişim bölü yatay değişim"
+      },
+      {
+        "en": "undefined slope",
+        "tr": "tanımsız eğim (dikey doğru)"
+      }
+    ],
+    "desmosTip": "Tabloya $(x_1, y_1)$ ve $(x_2, y_2)$ girip 'y1 ~ m*x1 + b' yazın."
+  },
+  "alg-slope-intercept": {
+    "title": "Eğim-Kesişim Formu ($y = mx + b$)",
+    "explanation": "$m$ eğim, $b$ ise y-eksenini kestiği noktanın ordinatıdır $(0, b)$.",
+    "traps": "x-eksenini kestiği noktayı bulmak için $y=0$ yazıp $x = -b/m$ hesaplanmalıdır; doğrudan $b$'ye bakmayın!",
+    "vocabulary": [
+      {
+        "en": "slope-intercept form",
+        "tr": "eğim-kesişim denklemi"
+      },
+      {
+        "en": "y-intercept",
+        "tr": "y-kesişimi"
+      }
+    ],
+    "desmosTip": "m ve b için slider ekleyerek grafiğin nasıl hareket ettiğini görebilirsiniz."
+  },
+  "alg-point-slope": {
+    "title": "Nokta-Eğim Formu ($y - y_1 = m(x - x_1)$)",
+    "explanation": "Eğimi $m$ olan ve $(x_1, y_1)$ noktasından geçen doğrunun denklemidir.",
+    "traps": "İşaretlere dikkat edin: $(3, -4)$ noktasında denklem $y - (-4) = y + 4 = m(x - 3)$ olur.",
+    "vocabulary": [
+      {
+        "en": "point-slope form",
+        "tr": "noktası ve eğimi bilinen doğru denklemi"
+      }
+    ],
+    "desmosTip": "Doğrudan bu formda yazabilirsiniz, Desmos otomatik olarak doğrusunu çizer."
+  },
+  "alg-standard-form": {
+    "title": "Standart Doğrusal Form ($Ax + By = C$)",
+    "explanation": "Eğim $m = -A/B$, y-kesişimi $C/B$, x-kesişimi $C/A$'dır.",
+    "traps": "Eğimi bulurken $A/B$ değil, $-A/B$ olduğunu unutmayın!",
+    "vocabulary": [
+      {
+        "en": "standard form",
+        "tr": "standart form"
+      }
+    ],
+    "desmosTip": "y'yi yalnız bırakmadan doğrudan $Ax + By = C$ olarak yazabilirsiniz."
+  },
+  "alg-parallel-perp": {
+    "title": "Paralel ve Dik Doğru Eğimleri",
+    "explanation": "Paralel doğruların eğimleri eşittir ($m_1 = m_2$). Dik doğruların eğimleri çarpımı $-1$'dir ($m_2 = -1/m_1$).",
+    "traps": "Dik doğruda eğim sadece ters çevrilmez, aynı zamanda İŞARET DEĞİŞTİRİR (negative reciprocal). Eğim $2/3$ ise dik eğim $-3/2$'dir.",
+    "vocabulary": [
+      {
+        "en": "parallel",
+        "tr": "paralel (eğimler eşit)"
+      },
+      {
+        "en": "perpendicular",
+        "tr": "birbirine dik ($90^\\circ$)"
+      },
+      {
+        "en": "negative reciprocal",
+        "tr": "işareti değişmiş çarpmaya göre ters"
+      }
+    ],
+    "desmosTip": "İki doğrunun dik olduğunu doğrulamak için eğimlerini çarpıp -1 olduğunu görün."
+  },
+  "alg-system-solutions": {
+    "title": "Doğrusal Sistemlerde Çözüm Koşulları",
+    "explanation": "Katsayı oranları: $a_1/a_2 \\neq b_1/b_2$ (1 çözüm); $a_1/a_2 = b_1/b_2 \\neq c_1/c_2$ (çözüm yok); $a_1/a_2 = b_1/b_2 = c_1/c_2$ (sonsuz çözüm).",
+    "traps": "Çözüm yok ile sonsuz çözümü karıştırmayın: Sabit terim oranı ($c_1/c_2$) eşitse sonsuz, eşit değilse sıfır çözümdür.",
+    "vocabulary": [
+      {
+        "en": "unique solution",
+        "tr": "tek çözüm (kesişen doğrular)"
+      },
+      {
+        "en": "no solution",
+        "tr": "çözümsüz (paralel doğrular)"
+      },
+      {
+        "en": "infinitely many solutions",
+        "tr": "sonsuz çözüm (çakışık doğrular)"
+      }
+    ],
+    "desmosTip": "İki denklemi yazıp bilinmeyen katsayıya slider ekleyin. Doğrular üst üste geldiğinde sonsuz çözümdür."
+  },
+  "adv-quadratic-formula": {
+    "title": "İkinci Dereceden Denklem Kök Formülü",
+    "explanation": "$ax^2 + bx + c = 0$ denkleminin kökleri: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$.",
+    "traps": "Paydada $2$ değil $2a$ vardır! Formülün başındaki $-b$ ifadesinde işaret hatası yapmayın.",
+    "vocabulary": [
+      {
+        "en": "quadratic formula",
+        "tr": "ikinci derece kök formülü"
+      },
+      {
+        "en": "real roots",
+        "tr": "gerçel kökler"
+      }
+    ],
+    "desmosTip": "Parabolü yazıp x-eksenini kestiği noktalara tıklayarak kökleri doğrudan okuyun."
+  },
+  "adv-discriminant": {
+    "title": "Diskriminant ($\\Delta = b^2 - 4ac$)",
+    "explanation": "$\\Delta > 0$ ise 2 farklı reel kök; $\\Delta = 0$ ise 1 çift katlı reel kök (teğet); $\\Delta < 0$ ise reel kök yoktur.",
+    "traps": "'Tek bir reel kök' veya 'x-eksenine teğet' dendiğinde $\\Delta = 0$ eşitliğini kurun.",
+    "vocabulary": [
+      {
+        "en": "discriminant",
+        "tr": "diskriminant"
+      },
+      {
+        "en": "tangent to x-axis",
+        "tr": "x-eksenine teğet (tek kök)"
+      }
+    ],
+    "desmosTip": "Parabol grafiği x-eksenini hiç kesmiyorsa diskriminant negatiftir."
+  },
+  "adv-vertex-form": {
+    "title": "Tepe Noktası Formu ($y = a(x - h)^2 + k$)",
+    "explanation": "Tepe noktası $(h, k)$ koordinatlarıdır. $h = -b/(2a)$, $k = f(h)$'dir.",
+    "traps": "İşaret tuzağı: $y = 2(x + 3)^2 - 5$ parabolünün tepe noktası $(3, -5)$ değil, $(-3, -5)$'tir!",
+    "vocabulary": [
+      {
+        "en": "vertex form",
+        "tr": "tepe noktası formu"
+      },
+      {
+        "en": "axis of symmetry",
+        "tr": "simetri ekseni"
+      }
+    ],
+    "desmosTip": "Parabolün tepe noktasına bir kez tıklayın, koordinatlar ekranda kalıcı görünür."
+  },
+  "adv-roots-properties": {
+    "title": "Vieta Teoremi (Kökler Toplamı & Çarpımı)",
+    "explanation": "$ax^2 + bx + c = 0$ için kökler toplamı $x_1 + x_2 = -b/a$, kökler çarpımı $x_1 \\cdot x_2 = c/a$'dır.",
+    "traps": "Kökleri tek tek bulmaya çalışarak vakit kaybetmeyin! Doğrudan $-b/a$ oranını yazın.",
+    "vocabulary": [
+      {
+        "en": "sum of roots",
+        "tr": "kökler toplamı ($-b/a$)"
+      },
+      {
+        "en": "product of roots",
+        "tr": "kökler çarpımı ($c/a$)"
+      }
+    ],
+    "desmosTip": "Köklerin toplamı simetri ekseninin iki katıdır: 2h = -b/a."
+  },
+  "adv-exp-growth-decay": {
+    "title": "Üstel Büyüme ve Azalma Modelleri",
+    "explanation": "$f(t) = a \\cdot b^t$. Büyümede $b = 1 + r$, azalışta $b = 1 - r$'dir.",
+    "traps": "%7 artışta $b = 1.07$'dir (1.70 DEĞİL!). %7 azalışta $b = 1 - 0.07 = 0.93$'tür.",
+    "vocabulary": [
+      {
+        "en": "exponential growth/decay",
+        "tr": "üstel artış / azalış"
+      },
+      {
+        "en": "initial value",
+        "tr": "başlangıç değeri"
+      }
+    ],
+    "desmosTip": "Fonksiyonu yazıp istenen zaman değerini fonksiyona parametre verin: f(5)."
+  },
+  "adv-circle-equation": {
+    "title": "Analitik Düzlemde Çember Denklemi",
+    "explanation": "$(x - h)^2 + (y - k)^2 = r^2$. Merkez $(h, k)$, yarıçap $r$'dir.",
+    "traps": "Eşitliğin sağ tarafı $r^2$'dir. Sağda 25 varsa yarıçap 5'tir!",
+    "vocabulary": [
+      {
+        "en": "center",
+        "tr": "merkez $(h, k)$"
+      },
+      {
+        "en": "radius",
+        "tr": "yarıçap ($r$)"
+      }
+    ],
+    "desmosTip": "Tam kareye tamamlamadan genel formu ($x^2 + y^2 - 6x + 8y = 0$) doğrudan yazın."
+  },
+  "adv-exponent-rules": {
+    "title": "Üslü ve Köklü İfade Kuralları",
+    "explanation": "$x^{a/b} = \\sqrt[b]{x^a}$, $x^{-n} = 1/x^n$, $x^a \\cdot x^b = x^{a+b}$, $x^a / x^b = x^{a-b}$.",
+    "traps": "Kesirli üste pay üs, payda ise kök derecesidir: $x^{2/3} = \\sqrt[3]{x^2}$.",
+    "vocabulary": [
+      {
+        "en": "fractional exponent",
+        "tr": "kesirli üs"
+      },
+      {
+        "en": "radical",
+        "tr": "köklü ifade"
+      }
+    ],
+    "desmosTip": "x yerine 2 veya 3 gibi bir sayı koyarak eşitliği Desmos'ta test edin."
+  },
+  "data-compound-interest": {
+    "title": "Bileşik Faiz Formülü",
+    "explanation": "$A = P(1 + r/n)^{nt}$. $P$ anapara, $r$ yıllık faiz oranı, $n$ yıldaki dönem sayısı, $t$ yıl sayısıdır.",
+    "traps": "Aylık bileşik faizde $n = 12$, üç aylıkta $n = 4$, günlükte $n = 365$'tir. Faiz oranını yüzde olarak değil ondalık ($%5 \\implies 0.05$) yazın.",
+    "vocabulary": [
+      {
+        "en": "principal",
+        "tr": "anapara ($P$)"
+      },
+      {
+        "en": "compounded monthly/quarterly",
+        "tr": "aylık / üç aylık bileşik faiz"
+      }
+    ],
+    "desmosTip": "Formülü tek satırda parantezleriyle yazarak anında hesaplatın."
+  },
+  "data-percent-change": {
+    "title": "Yüzde Değişim Formülü",
+    "explanation": "$\\% \\Delta = \\frac{\\text{Yeni} - \\text{Eski}}{\\text{Eski}} \\times 100$.",
+    "traps": "Paydada daima BAŞLANGIÇ (eski) değeri olmalıdır, yeni değer değil!",
+    "vocabulary": [
+      {
+        "en": "percent change",
+        "tr": "yüzde değişim"
+      }
+    ],
+    "desmosTip": "(Yeni - Eski)/Eski yazıp sonucun ondalığını yüzdeye çevirin."
+  },
+  "data-mean-median-range": {
+    "title": "Merkezi Eğilim ve Dağılım Ölçüleri",
+    "explanation": "Ortalama $= \\sum x / n$, Açıklık (Range) $= \\text{Maks} - \\text{Min}$, Çeyrekler Açıklığı $(\\text{IQR}) = Q_3 - Q_1$.",
+    "traps": "Aykırı değerler ortalamayı bozar ama medyanı neredeyse hiç etkilemez.",
+    "vocabulary": [
+      {
+        "en": "mean",
+        "tr": "ortalama"
+      },
+      {
+        "en": "median",
+        "tr": "medyan (ortanca)"
+      },
+      {
+        "en": "range",
+        "tr": "açıklık"
+      }
+    ],
+    "desmosTip": "Desmos listesi açıp mean(L) ve median(L) komutlarını kullanın."
+  },
+  "data-margin-error": {
+    "title": "Hata Payı ve Örneklem Boyutu",
+    "explanation": "Güven Aralığı $= \\hat{p} \\pm \\text{MOE}$. Hata payı $\\text{MOE} \\propto 1/\\sqrt{n}$ ilişkisiyle örneklem büyüdükçe küçülür.",
+    "traps": "Hata payını yarıya indirmek için örneklem boyutunu 2 katına değil, $2^2 = 4$ KATINA çıkarmak gerekir!",
+    "vocabulary": [
+      {
+        "en": "margin of error",
+        "tr": "hata payı"
+      },
+      {
+        "en": "sample size",
+        "tr": "örneklem büyüklüğü"
+      }
+    ],
+    "desmosTip": "Hata payı sadece rastgele seçilmiş örneklemler için geçerlidir."
+  },
+  "data-std-dev": {
+    "title": "Standart Sapma ve 68-95-99.7 Kuralı",
+    "explanation": "Verilerin ortalamadan ne kadar yayıldığını gösterir. Normal dağılımda verilerin %68'i $\\pm 1\\sigma$, %95'i $\\pm 2\\sigma$ içindedir.",
+    "traps": "Veriler ortalamaya ne kadar yakın toplanmışsa standart sapma o kadar KÜÇÜKTÜR.",
+    "vocabulary": [
+      {
+        "en": "standard deviation",
+        "tr": "standart sapma"
+      },
+      {
+        "en": "spread",
+        "tr": "yayılım"
+      }
+    ],
+    "desmosTip": "Desmos'ta stdev(L) fonksiyonu ile hesaplayabilirsiniz."
+  },
+  "trig-unit-circle": {
+    "title": "Radyan - Derece Dönüşümü",
+    "explanation": "$\\pi\\text{ radyan} = 180^{\\circ}$. Dereceden radyana: $\\times \\frac{\\pi}{180}$. Radyandan dereceye: $\\times \\frac{180}{\\pi}$.",
+    "traps": "Desmos açı modunun Degrees mi Radians mı olduğuna dikkat edin.",
+    "vocabulary": [
+      {
+        "en": "radians",
+        "tr": "radyan"
+      },
+      {
+        "en": "degrees",
+        "tr": "derece"
+      }
+    ],
+    "desmosTip": "Radyan değerini 180/pi ile çarparak dereceye çevirin."
+  },
+  "trig-cofunction": {
+    "title": "Tümler Açı Trigonometrik Özdeşliği",
+    "explanation": "$\\sin(x^{\\circ}) = \\cos(90^{\\circ} - x^{\\circ})$. Eğer $\\sin(A) = \\cos(B)$ ise $A + B = 90^{\\circ}$'dir.",
+    "traps": "Soruda $\\sin(3x) = \\cos(2x + 10)$ verilirse $3x + 2x + 10 = 90$ denklemini kurun!",
+    "vocabulary": [
+      {
+        "en": "complementary angles",
+        "tr": "tümler açılar ($90^\\circ$)"
+      },
+      {
+        "en": "cofunction identity",
+        "tr": "eşfonksiyon kimliği"
+      }
+    ],
+    "desmosTip": "Doğrudan açılar toplamını 90'a eşitleyip çözün."
+  },
+  "trig-soh-cah-toa": {
+    "title": "SOH CAH TOA (Trigonometrik Oranlar)",
+    "explanation": "$\\sin = \\frac{\\text{Karşı}}{\\text{Hipotenüs}}$, $\\cos = \\frac{\\text{Komşu}}{\\text{Hipotenüs}}$, $\\tan = \\frac{\\text{Karşı}}{\\text{Komşu}}$.",
+    "traps": "Hangi açının komşusu ve karşısı olduğuna dikkat edin, açı değiştikçe karşı ve komşu yer değiştirir!",
+    "vocabulary": [
+      {
+        "en": "sine",
+        "tr": "sinüs (karşı/hipotenüs)"
+      },
+      {
+        "en": "cosine",
+        "tr": "kosinüs (komşu/hipotenüs)"
+      },
+      {
+        "en": "tangent",
+        "tr": "tanjant (karşı/komşu)"
+      }
+    ],
+    "desmosTip": "Desmos'ta sin(x), cos(x), tan(x) değerlerini doğrudan hesaplayabilirsiniz."
+  },
+  "trig-arc-length": {
+    "title": "Yay Uzunluğu Formülü",
+    "explanation": "Radyan cinsinden: $s = r\\theta$. Derece cinsinden: $s = \\frac{\\theta}{360} \\cdot 2\\pi r$.",
+    "traps": "Açı radyan ise doğrudan $r \\cdot \\theta$ yapılır, tekrar $\\pi$ veya 360'a bölmeyin!",
+    "vocabulary": [
+      {
+        "en": "arc length",
+        "tr": "yay uzunluğu"
+      },
+      {
+        "en": "subtended angle",
+        "tr": "yayı gören merkez açı"
+      }
+    ],
+    "desmosTip": "Açının radyan mı derece mi olduğuna göre doğru formülü seçin."
+  },
+  "trig-sector-area": {
+    "title": "Daire Diliminin Alanı Formülü",
+    "explanation": "Radyan cinsinden: $A = \\frac{1}{2}r^2\\theta$. Derece cinsinden: $A = \\frac{\\theta}{360} \\cdot \\pi r^2$.",
+    "traps": "Yay uzunluğu formülü ($2\\pi r$) ile Dilim alanı formülünü ($\\pi r^2$) karıştırmayın.",
+    "vocabulary": [
+      {
+        "en": "sector area",
+        "tr": "daire diliminin alanı"
+      }
+    ],
+    "desmosTip": "0.5 * r^2 * theta veya (derece/360) * pi * r^2."
+  }
+};

@@ -349,6 +349,9 @@ const app = {
               </div>
               <div>${f.desmosTip}</div>
             </div>
+
+            <!-- Turkish Formula Translation, Terminology & Traps Drawer -->
+            ${this.getFormulaTrHtml(f.id)}
           </div>
         </div>
       `;
@@ -385,7 +388,7 @@ const app = {
     const detailsContainer = document.getElementById("domain-details-container");
     if (detailsContainer) {
       detailsContainer.innerHTML = window.SAT_TOPICS.domains.map(d => {
-        const subtopicsHtml = d.subtopics.map(st => `
+        const subtopicsHtml = d.subtopics.map((st, sIdx) => `
           <div class="subtopic-item">
             <div class="subtopic-item-header">
               <span class="subtopic-title">${st.name}</span>
@@ -393,6 +396,9 @@ const app = {
             </div>
             <div class="subtopic-desc">${st.description}</div>
             <div class="subtopic-key-concept"><strong>Core Principle:</strong> ${st.keyConcept}</div>
+
+            <!-- Turkish Subtopic Translation, Terminology & Trap Drawer -->
+            ${this.getSubtopicTrHtml(st.name, `st-${d.id}-${sIdx}`)}
           </div>
         `).join("");
 
@@ -1471,6 +1477,171 @@ const app = {
         </div>
       </div>
     `;
+  },
+
+  getSubtopicTrHtml(stName, uniqueId) {
+    const tr = window.SAT_TURKISH_SUBTOPICS ? window.SAT_TURKISH_SUBTOPICS[stName] : null;
+    if (!tr) return "";
+
+    const vocabHtml = tr.vocabulary && tr.vocabulary.length ? `
+      <div class="tr-q-vocab-box" style="margin-top: 12px;">
+        <div class="tr-vocab-label">
+          <span>📖</span>
+          <span>Önemli Matematiksel Terimler (İngilizce ➔ Türkçe)</span>
+        </div>
+        <div class="tr-vocab-chips-wrap">
+          ${tr.vocabulary.map(v => `
+            <div class="tr-vocab-chip">
+              <span class="vocab-en">${v.en}</span>
+              <span class="vocab-arrow">➔</span>
+              <span class="vocab-tr">${v.tr}</span>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    ` : "";
+
+    const tipHtml = tr.tip ? `
+      <div class="tr-q-tip-box" style="margin-top: 12px;">
+        <div class="tr-tip-label">
+          <span>⚠️</span>
+          <span>Sınav Stratejisi & College Board Tuzağı</span>
+        </div>
+        <div>${tr.tip}</div>
+      </div>
+    ` : "";
+
+    const desmosHtml = tr.desmosTip ? `
+      <div class="desmos-callout" style="margin-top: 12px;">
+        <div class="desmos-title">
+          <span>⚡</span>
+          <span>Desmos Çözüm & Doğrulama İpucu</span>
+        </div>
+        <div style="font-size: 13px; line-height: 1.5;">${tr.desmosTip}</div>
+      </div>
+    ` : "";
+
+    const drawerId = `drawer-tr-${uniqueId}`;
+    const btnId = `btn-tr-${uniqueId}`;
+    const arrowId = `arrow-tr-${uniqueId}`;
+
+    return `
+      <div class="subtopic-tr-drawer" style="margin-top: 14px; border-top: 1px dashed var(--border-light); padding-top: 12px;">
+        <button class="tr-q-toggle-btn" onclick="app.toggleTrSubtopic('${drawerId}', '${btnId}', '${arrowId}')" id="${btnId}">
+          <span>🇹🇷</span>
+          <span>Türkçe Açıklama & Terimler</span>
+          <span class="tr-q-arrow" id="${arrowId}">▼</span>
+        </button>
+        <div class="tr-q-content" id="${drawerId}">
+          <div class="tr-q-text-box">
+            <div class="tr-q-label">
+              <span>🇹🇷</span>
+              <span>${tr.title}</span>
+            </div>
+            <div class="tr-q-translation" style="margin-bottom: 10px;">${tr.description}</div>
+            <div style="font-size: 13.5px; line-height: 1.6; color: var(--primary-dark); background: var(--surface-alt); padding: 10px 14px; border-radius: 6px; border-left: 3px solid var(--primary);">
+              <strong>Temel İlke (Core Principle):</strong> ${tr.corePrinciple}
+            </div>
+          </div>
+          ${vocabHtml}
+          ${tipHtml}
+          ${desmosHtml}
+        </div>
+      </div>
+    `;
+  },
+
+  getFormulaTrHtml(fId) {
+    const tr = window.SAT_TURKISH_FORMULAS ? window.SAT_TURKISH_FORMULAS[fId] : null;
+    if (!tr) return "";
+
+    const vocabHtml = tr.vocabulary && tr.vocabulary.length ? `
+      <div class="tr-q-vocab-box" style="margin-top: 12px;">
+        <div class="tr-vocab-label">
+          <span>📖</span>
+          <span>Önemli Matematiksel Terimler (İngilizce ➔ Türkçe)</span>
+        </div>
+        <div class="tr-vocab-chips-wrap">
+          ${tr.vocabulary.map(v => `
+            <div class="tr-vocab-chip">
+              <span class="vocab-en">${v.en}</span>
+              <span class="vocab-arrow">➔</span>
+              <span class="vocab-tr">${v.tr}</span>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    ` : "";
+
+    const trapsHtml = tr.traps ? `
+      <div class="tr-q-tip-box" style="margin-top: 12px;">
+        <div class="tr-tip-label">
+          <span>⚠️</span>
+          <span>Türkçe Sınav Tuzağı & Dikkat Edilecek Noktalar</span>
+        </div>
+        <div>${tr.traps}</div>
+      </div>
+    ` : "";
+
+    const desmosHtml = tr.desmosTip ? `
+      <div class="desmos-callout" style="margin-top: 12px;">
+        <div class="desmos-title">
+          <span>⚡</span>
+          <span>Desmos İpucu (Türkçe)</span>
+        </div>
+        <div style="font-size: 13px; line-height: 1.5;">${tr.desmosTip}</div>
+      </div>
+    ` : "";
+
+    const drawerId = `drawer-tr-formula-${fId}`;
+    const btnId = `btn-tr-formula-${fId}`;
+    const arrowId = `arrow-tr-formula-${fId}`;
+
+    return `
+      <div class="formula-tr-drawer" style="margin-top: 16px; border-top: 1px dashed var(--border-light); padding-top: 12px;">
+        <button class="tr-q-toggle-btn" onclick="app.toggleTrFormula('${drawerId}', '${btnId}', '${arrowId}')" id="${btnId}">
+          <span>🇹🇷</span>
+          <span>Türkçe Açıklama & Terimler</span>
+          <span class="tr-q-arrow" id="${arrowId}">▼</span>
+        </button>
+        <div class="tr-q-content" id="${drawerId}">
+          <div class="tr-q-text-box">
+            <div class="tr-q-label">
+              <span>🇹🇷</span>
+              <span>${tr.title}</span>
+            </div>
+            <div class="tr-q-translation">${tr.explanation}</div>
+          </div>
+          ${vocabHtml}
+          ${trapsHtml}
+          ${desmosHtml}
+        </div>
+      </div>
+    `;
+  },
+
+  toggleTrSubtopic(drawerId, btnId, arrowId) {
+    const drawer = document.getElementById(drawerId);
+    const btn = document.getElementById(btnId);
+    if (!drawer || !btn) return;
+
+    const isOpen = drawer.classList.toggle("open");
+    btn.classList.toggle("active", isOpen);
+    if (isOpen) {
+      this.renderMath();
+    }
+  },
+
+  toggleTrFormula(drawerId, btnId, arrowId) {
+    const drawer = document.getElementById(drawerId);
+    const btn = document.getElementById(btnId);
+    if (!drawer || !btn) return;
+
+    const isOpen = drawer.classList.toggle("open");
+    btn.classList.toggle("active", isOpen);
+    if (isOpen) {
+      this.renderMath();
+    }
   },
 
   toggleTrQuestion(drawerId, btnId, arrowId) {
